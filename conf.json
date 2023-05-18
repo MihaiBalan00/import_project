@@ -1,0 +1,25 @@
+{
+    "ES": {
+        "IP": "http://10.30.10.112:9200",
+        "INDEX_WISE": "index_wise"
+    },
+    "errorLogFile": "Logs/errorLog.txt",
+    "logFile": "Logs/log.txt",
+    "DIRECTORIES": {
+        "sourceDirWifiCSV": "C:\\Users\\user\\Desktop\\FisiereConvertiteKismet",
+        "sourceDirWigle": "",
+        "sourceDirOUI": "",
+        "destDirFaulty": "",
+        "destDirImported": ""
+    },
+    "CONFIGS":{
+        "userName": "SRSIPDN\\user.sm",
+        "userApplication": "SRSIPDN\\user.sm",
+        "applicationName":"Wise",
+        "functionName":"fImportFilesSet"
+    },
+    "EXPRESS_PORT": 5005,
+    "WIN_SERVICE_NAME": "Import Files Into DB",
+    "WIN_SERVICE_DESCRIPTION": "Serviciu de import al fisierelor in baza de date",
+    "WIN_SERVICE_SCRIPT": "./index.js"
+}
