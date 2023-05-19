@@ -143,24 +143,24 @@ const getFilesFromDirectory= (directoryPath, pattern) => {
     return files;
   }
 
-const checkForFileMask = async(ipAddress) =>{
+// const checkForFileMask = async(ipAddress) =>{
 
-    let pairMaskFile = {};
-    try{
-      const searchQuery = {};
+//     let pairMaskFile = {};
+//     try{
+//       const searchQuery = {"select d.cname,d.cValueInteger from swise.tWiseParameterDescription d where EXISTS (SELECT 1 FROM swise.tState t Where d.cType=t.cID AND t.cCategory ilike 'SystemParameter' and t.cState ilike 'FileMask')"};
     
-    let elasticResult = await searchElastic(searchQuery, ES.INDEX_WISE);
+//     let elasticResult = await searchElastic(searchQuery, ES.INDEX_WISE);
     
-    if(elasticResult)
-        elasticResult.hits.hits.map(hit => {pairMaskFile[hit._source["d.cname"]] = hit._source["d.cValueInteger"];});
+//     if(elasticResult)
+//         elasticResult.hits.hits.map(hit => {pairMaskFile[hit._source["d.cname"]] = hit._source["d.cValueInteger"];});
 
-    logging(ipAddress, currentUserName, "Function checkForFileMask: checking done.", logFile);
-    }
-    catch (error){
-        logging(ipAddress, currentUserName, `Function checkForFileMask: Error: ${error}`, errorLogFile);       
-    }
-    return pairMaskFile;    
-}
+//     logging(ipAddress, currentUserName, "Function checkForFileMask: checking done.", logFile);
+//     }
+//     catch (error){
+//         logging(ipAddress, currentUserName, `Function checkForFileMask: Error: ${error}`, errorLogFile);       
+//     }
+//     return pairMaskFile;    
+// }
 
 const isFileLocked = (file) => {
     let stream = null;
@@ -183,11 +183,11 @@ const processTxtFiles = (ipAddress) => {
             logging(ipAddress, currentUserName, `Txt file type...`, logFile);
             logging(ipAddress, currentUserName, `Get all ${txtFileList.length} txt files.....done.`, logFile);              
             
-            const pairFileMask = checkForFileMask(ipAddress);
+            //const pairFileMask = checkForFileMask(ipAddress);
 
             txtFileList.map(file => {
                 try {
-                    var fileNameValues = file.name.split('_');
+                    let fileNameValues = file.name.split('_');
             
                     if (fileNameValues.length > 3) {
                         txtMisiune = fileNameValues[0];
@@ -223,7 +223,7 @@ const processTxtFiles = (ipAddress) => {
                       let fisOk = true;
                       // Event handler for each line
                       rl.on('line', (line) => {
-                          console.log(line);
+                          
                             if(!forceContinueOnNextFile)
                             {
                               if (line!=="") {
@@ -323,7 +323,7 @@ const processTxtFiles = (ipAddress) => {
                         
                         stream.close();
                         
-                        if (fisOk == true)
+                        if (fisOk === true)
                         {
                             //moveFileTo(file, "prelucrate");
                             
@@ -375,7 +375,7 @@ const moveFileTo = (file, destinationPath) => {
 }
 
 
-const getIDFromWiseDatabase = (ipAddress, xUserApplication, xIP, xApplicationName, xFunctionName, xFileName, xDescriptionFile,  xSizeFile) => 
+const getIDFromWiseDatabase = (xUserApplication, xIP, xApplicationName, xFunctionName, xFileName, xDescriptionFile,  xSizeFile) => 
         {
             let result = -1;
             try
@@ -389,7 +389,7 @@ const getIDFromWiseDatabase = (ipAddress, xUserApplication, xIP, xApplicationNam
                                                   { match: { fieldName: `${new Date().toISOString()}` } },
                                                   { match: { fieldName: `${xUserApplication}` } },
                                                   { match: { fieldName: `${xIP}` } },
-                                                  { match: { fieldName: `${applicationName}` } },
+                                                  { match: { fieldName: `${xApplicationName}` } },
                                                   { match: { fieldName: `${xFunctionName}` } },
                                                   { match: { fieldName: `${xFileName}` } },
                                                   { match: { fieldName: `${xDescriptionFile}` } },
@@ -515,7 +515,7 @@ const deleteRecordsFromDatabase = async(xIDFileName, ipAddress) =>
         }
 
 
-
+//TODO: Remake from scratch all csv FUNCTION correctly.
 const csvFunction = (ipAddress) => {
 
   const csvFileList = getFilesFromDirectory(sourceDirWifiCSV, ".csv");
@@ -537,36 +537,40 @@ const csvFunction = (ipAddress) => {
         foundBTLE = false;
 
 
-        //TODO: Check this values
          //********************************** RESET DICTIONARY VALUES****************************
-        columnAPNames = ["BSSID", "First time seen", "Last time seen", "channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "# beacons", "# IV", "LAN IP", "ID-length", "ESSID", "Key"];
-        columnPRNames = ["Station MAC", "First time seen", "Last time seen", "Power", "# packets", "BSSID"]; //Probed ESSIDs
-        columnBTLENames = ["BTLE Station MAC", "BTLE First time seen", "BTLE Last time seen", "BTLE Power", "BTLE # packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
-        columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First time seen", "BTLE Last time seen", "BTLE Power", "BTLE # packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
+        columnAPNames = ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key"];
+        columnPRNames = ["Station MAC", "First Time Seen", "Last Time Seen", "Power", "#Packets", "BSSID"]; //Probed ESSIDs
+        columnBTLENames = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
+        columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
         //**************************************************************************************
             try
               {
-                  fileNameValues = file.name.split('_');
-                  pairFileMask = checkForFileMask(ipAddress);
-                  fileNameLocation = pairFileMask["codeLocation"] === -1 ? "-" : fileNameValues[pairFileMask["codeLocation"]];
-                  fileNameMission = pairFileMask["codeMission"] === -1 ? "-" : fileNameValues[pairFileMask["codeMission"]];
-                  fileNameSystemCode = pairFileMask["codeSystem"] === -1 ? "-" : fileNameValues[pairFileMask["codeSystem"]];
-                  fileNameAdapterCode = pairFileMask["codeAdapter"] === -1 ? "-" : fileNameValues[pairFileMask["codeAdapter"]];
+                  let fileNameValues = file.name.split('_');
+                  fileNameLocation = fileNameValues[0];
+                  fileNameMission = fileNameValues[1];
+                  fileNameSystemCode = fileNameValues[2];
+                  fileNameAdapterCode = fileNameValues[3];
+                  //pairFileMask = checkForFileMask(ipAddress);
+                  // fileNameLocation = pairFileMask["codeLocation"] === -1 ? "-" : fileNameValues[pairFileMask["codeLocation"]];
+                  // fileNameMission = pairFileMask["codeMission"] === -1 ? "-" : fileNameValues[pairFileMask["codeMission"]];
+                  // fileNameSystemCode = pairFileMask["codeSystem"] === -1 ? "-" : fileNameValues[pairFileMask["codeSystem"]];
+                  // fileNameAdapterCode = pairFileMask["codeAdapter"] === -1 ? "-" : fileNameValues[pairFileMask["codeAdapter"]];
               }
               catch (error)
               {
+                  
                   logging(ipAddress, currentUserName, `Critical error while getting values from CSV File name ${file.name}. Error: ${error}`, errorLogFile);
                   forceContinueOnNextFile = true;
                   return;
               }
 
            //get an ID from dataBase to store session for each file. ID will be used to rollback data if error occur
-           uniqueIDFile = getIDFromWiseDatabase(ipAddress, userApplication,ipAddress,applicationName,functionName,file.name,"",file.length);
-           if (uniqueIDFile === -1){
-               logging(ipAddress, currentUserName, `Critical error while getting ID from Database for CSV File ${file.name}.`, errorLogFile);
-               forceContinueOnNextFile=true;
-               return; 
-           }
+          //  uniqueIDFile = getIDFromWiseDatabase(userApplication,ipAddress,applicationName,functionName,file.name,"",file.length);
+          //  if (uniqueIDFile === -1){
+          //      logging(ipAddress, currentUserName, `Critical error while getting ID from Database for CSV File ${file.name}.`, errorLogFile);
+          //      forceContinueOnNextFile=true;
+          //      return; 
+          //  }
            
            try
                 {
@@ -579,58 +583,50 @@ const csvFunction = (ipAddress) => {
                         }
                     logging(ipAddress, currentUserName, `CSV File ${file.name}  is not locked.`, logFile);
                     
-
-                    const stream = fs.createReadStream(file.path);
-
-                    // Create a readline interface
-                    const rl = readline.createInterface({
-                      input: stream,
-                      crlfDelay: Infinity
-                    });
-
-
-                    // Event handler for each line
-                    rl.on('line', (line) => {
-                    
-                    
-                   
-                    if(!forceContinueOnNextFile) {
-                        if (line!=="") {
-                          
+                     
+                    fs.readFile(file.path, 'utf8', (err, data) => {
+                      if (err) {
+                        console.error(err);
+                        return;
+                      }
+                      
+                      const lines = data.split('\n');
+                      
+                      lines.forEach((line) => {
+                        // Process the line here
+                        
+                    if(forceContinueOnNextFile===false && line!=="") {
+                            
                             //search case insensitive, if the line includes searched keyword
                             //Check file for AP import; Get values line by line and add to pair
                             //search if find column name for AP format, minim 3 column
                             
+                          
                             if (line.indexOf(columnAPNames[0]) >= 0 && line.indexOf(columnAPNames[1]) >= 0 && line.indexOf(columnAPNames[2]) >= 0 && line.indexOf(columnAPNames[3]) >= 0 && line.indexOf(columnAPNames[4]) >= 0)
                             {
-                              
+                                
                                 foundAP = true;
                                 foundPR = false;
                                 foundBTLE = false;
                                 if (line.includes("Latitudine") && line.includes("Longitudine"))
                                 {
+                                  
                                     if (!columnPRNames.includes("latitudine")) {columnAPNames=columnAPNames.concat(["Latitudine"]);}
                                     if (!columnPRNames.includes("Longitudine")) { columnAPNames = columnAPNames.concat(["Longitudine"]);}
                                 }
-                                columnAPNameCSV = line.split(',');
+                                let columnAPNameCSV = line.split(',');
+                                
                                 // CHECK FOR INTEGRITY (lenght of column names and eqaulity)
                                 
                                 if (columnAPNameCSV.length === columnAPNames.length)
                                 {
                                     //verific denumirea coloanelor
                                     for (let i = 0; i < columnAPNameCSV.length; i++)
-                                    {
-                                        if (columnAPNameCSV[i].toLowerCase() === "#beacons")
-                                        {
-                                            columnAPNameCSV[i] = "# beacons";
-                                        }
-                                        if (columnAPNameCSV[i].toLowerCase() === "#iv")
-                                        {
-                                            columnAPNameCSV[i] = "# iv";
-                                        }
+                                    {            
                                         if (columnAPNames[i].toLowerCase().trim() !== columnAPNameCSV[i].toLowerCase().trim())
                                         {
                                             logging(ipAddress, currentUserName, `Column name (AP) from CSV File ${file.name} are not the same with what was declared`, errorLogFile);
+                                            
                                             forceContinueOnNextFile = true;
                                         }
                                     }
@@ -638,7 +634,7 @@ const csvFunction = (ipAddress) => {
                                 }
                                 else
                                 {
-                                    logging(ipAddress, currentUserName, `No of column (AP) from CSV File ${file.name} ${columnApNames.length} is not equal with what was declared ${columnApNameCSV.length}`, errorLogFile);
+                                    logging(ipAddress, currentUserName, `No of column (AP) from CSV File ${file.name} ${columnAPNames.length} is not equal with what was declared ${columnAPNameCSV.length}`, errorLogFile);
                                     forceContinueOnNextFile = true;
                                 }
                                 
@@ -672,7 +668,7 @@ const csvFunction = (ipAddress) => {
                            
                             if (!line.includes("BTLE") && line.indexOf(columnPRNames[0]) >= 0 && line.indexOf(columnPRNames[1]) >= 0 && line.indexOf(columnPRNames[2]) >= 0) 
                             {
-                              
+                             
                                 foundPR = true;
                                 foundAP = false;
                                 foundBTLE = false;
@@ -688,7 +684,7 @@ const csvFunction = (ipAddress) => {
                                 {
                                     if (!columnPRNames.includes("Probed ESSIDs")) {columnPRNames = columnPRNames.concat(["Probed ESSIDs"]);}
                                 }
-                                columnPRNameCSV = line.split(',').slice(0,columnPRNames.length - 3);// !!! Only First 6 columns  //line.Split(',');
+                                let columnPRNameCSV = line.split(',').slice(0,columnPRNames.length - 3);// !!! Only First 6 columns  //line.Split(',');
                                 // CHECK FOR INTEGRITY (lenght of column names and eqaulity) !!! BUT only for first 6 columns. Last one is ProbedESSIDs and it is splitted by coma
                                 if (columnPRNameCSV.length === columnPRNames.length - 3)
                                 {
@@ -717,12 +713,10 @@ const csvFunction = (ipAddress) => {
 
                             //*************
                             // Check file for BTLE import; Get values line by line and add to pair
-                            if(columnBTLENames[2])
-          
-                            console.log(file.name);
                             
                             if (line.includes("BTLE") && line.indexOf(columnBTLENames[0]) >= 0 && line.indexOf(columnBTLENames[1]) >= 0 && line.indexOf(columnBTLENames[2]) >= 0)
                             {
+                            
                                 if (!line.includes("BTLE ESSID"))
                                 {
                                     columnBTLENames = columnBTLENamesOldVers;
@@ -730,18 +724,14 @@ const csvFunction = (ipAddress) => {
                                 foundPR = false;
                                 foundAP = false;
                                 foundBTLE = true;
-                                columnBTLENameCSV = line.split(',').slice(0,columnBTLENames.length - 1);// !!! Only First 6 columns  //line.Split(',');
+                                let columnBTLENameCSV = line.split(',').slice(0,columnBTLENames.length - 1);// !!! Only First 6 columns  //line.Split(',');
                                // CHECK FOR INTEGRITY (lenght of column names and eqaulity) !!! BUT only for first 6 columns. Last one is BTLE and it is splitted by coma
-                                if (columnBTLENameCSV.length == columnBTLENames.length - 1)
+                                if (columnBTLENameCSV.length === columnBTLENames.length - 1)
                                 {
                                     //verific denumirea coloanelor
                                     for (let i = 0; i < columnBTLENameCSV.length; i++)
                                     {
-                                        if (columnBTLENameCSV[i].toLowerCase() == "btle #packets")
-                                        {
-                                            columnBTLENameCSV[i] = "BTLE # packets";
-                                        }
-                                        if (columnBTLENames[i].toLowerCase() != columnBTLENameCSV[i].toLowerCase().trim())
+                                        if (columnBTLENames[i].toLowerCase() !== columnBTLENameCSV[i].toLowerCase().trim())
                                         {
                                             logging(ipAddress, currentUserName, `Column name (BTLE) from CSV File ${file.name} are not the same with what was declared`, errorLogFile);
                                             forceContinueOnNextFile = true;
@@ -752,7 +742,7 @@ const csvFunction = (ipAddress) => {
                                 else
                                 {
                                     logging(ipAddress, currentUserName, `No of column (BTLE) from CSV File ${file.name} ${columnBTLENames.length} is not equal with what was declared ${columnBTLENames}`, errorLogFile);
-                                    forceContinueOnNextFile = true;
+                                   forceContinueOnNextFile = true;
                                 }
                                 
                             }
@@ -764,8 +754,10 @@ const csvFunction = (ipAddress) => {
                             
                             if (foundAP && !forceContinueOnNextFile)
                             {
+                              
                                 if (line.includes("\\,")) {line=line.replace("\\,", ""); }
                                 csvAPValues = line.split(',');
+                                
                                 //Apar probleme cand in coloana Key exista valoare. Creste nr de csvAPValues cu 1. |Cand se creeaza fisierul nu pune automat , daca e empty
                                 if (csvAPValues.length === columnAPNames.length + 1)
                                 {
@@ -773,18 +765,22 @@ const csvFunction = (ipAddress) => {
                                     //SM 20211208
                                     csvAPValues = csvAPValues.slice(0, csvAPValues.length - 1);
                                 }
-                                
+                               
                                 if (csvAPValues.length === columnAPNames.length)
                                 {
 
                                     for (let i = 0; i < csvAPValues.length; i++)
                                     {
                                         //add a line with values in dictionary
+                                        
                                         pairAP[columnAPNames[i]] = csvAPValues[i].trim();
+                                        
                                     }
+                                    
                                     //add line (dictionary) in csvList
                                     pairAPLine = pairAP;                                   
                                     currentCSVfileAP.push(pairAPLine);
+                                    
                                     pairAP={};
                                     return;
                                 }
@@ -808,11 +804,12 @@ const csvFunction = (ipAddress) => {
                              
                              if (foundPR && !forceContinueOnNextFile)
                              {
-                              
+                                
                                  csvPRValues = line.split(',').slice(0, columnPRNames.length - 1);
                               
                                  probedESSIDS = line.split(',').slice(0, columnPRNames.length - 1);
-                                 ESSIDS = string.join(",", probedESSIDS);
+                                 let ESSIDS = probedESSIDS.join(',');
+                                 
                                  if (csvPRValues.length === columnPRNames.length-1)
                                  {
  
@@ -826,14 +823,15 @@ const csvFunction = (ipAddress) => {
                                      //add line (dictionary) in csvList
                                      let pairRPLine = pairPR;
                                      currentCSVfilePR.push(pairRPLine);
+                                  
                                      pairPR = {};
                                      return;
                                  }
                                  else
                                  {
-                                     if (line[0] === '\0') { return; } //Daca s-a terminat brusc fisierul
+                                     if (line.trim().length === 0) { return; } //Daca s-a terminat brusc fisierul
                                      logging(ipAddress, currentUserName, `No of values (PR) from CSV File ${file.name} is not equal with no of declared column.`, errorLogFile);
-                                     forceContinueOnNextFile = true;
+                                    forceContinueOnNextFile = true;
                                  }
                              }
                              
@@ -873,26 +871,22 @@ const csvFunction = (ipAddress) => {
                                  }
                              }
                             
-                         }
-                      }}); //while
-                      rl = readline.createInterface({
-                        input: stream,
-                        crlfDelay: Infinity
-                      });
-                    
-                    
                         
+                      }});}); 
+                                         
                     //finished to parse CSV file. Next check for error and if zero errors import in database
 
                     if (currentCSVfileAP.length > 0 && !forceContinueOnNextFile)
                     {
+                  
                         //Importam in baza de date AP
                         currentCSVfileAP.map( item => 
                         {
+                          
                             try
                             {
-                      // insert AP STRUCTURE IN DATABASE
-                                if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First time seen"], item["Last time seen"], item["channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["# beacons"], item["# IV"], item["LAN IP"], item["ID-length"], item["ESSID"].replace("\0", ""), item["Key"], "NULL", item["BSSID"], "", "", uniqueIDFile, item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0"))
+                      // insert AP STRUCTURE IN DATABASE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+                                if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First time seen"], item["Last time seen"], item["channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["# beacons"], item["# IV"], item["LAN IP"], item["ID-length"], item["ESSID"].replace("\0", ""), item["Key"], "NULL", item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0"))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -901,27 +895,28 @@ const csvFunction = (ipAddress) => {
                             catch (error)
                             {
                                 logging(ipAddress, currentUserName, `Error importing AP structure from CSV File ${file.name}. AP will not be imported in database! Detail error ${error}`, errorLogFile);
-                                deleteRecordsFromDatabase(uniqueIDFile, ipAddress);                                
-                                forceContinueOnNextFile = true;
+                                deleteRecordsFromDatabase("uniqueIDFile", ipAddress);                                
+                              forceContinueOnNextFile = true;
                             } 
                         });
                     }
                     else
                     {
-                        logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. AP rows count=${currentCSVfileAP.length}. AP will not be imported in database. Move on to PR`, logFile);
+                        logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. AP rows count=${currentCSVfileAP.length}. AP will not be imported in database. Move on to PR`, errorLogFile);
                        // forceContinueOnNextFile = true; Must move on to PR rows
                     }
 
                    
                     if (currentCSVfilePR.length > 0 && !forceContinueOnNextFile)
                     {
+                      
                         //Importam in baza de date PR
                         currentCSVfilePR.map(item =>
                         {
                             try
                             {
 //insert PROBE REQUEST STRUCTURE IN DATABASE
-                                if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First time seen"], item["Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["Power"], "NULL", "NULL", "NULL", "NULL", item["Probed ESSIDs"].replace("\0", ""), "NULL", item["# packets"], item["BSSID"], "", "", uniqueIDFile, item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0", ))
+                                if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First time seen"], item["Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["Power"], "NULL", "NULL", "NULL", "NULL", item["Probed ESSIDs"].replace("\0", ""), "NULL", item["# packets"], item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0", ))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -930,20 +925,22 @@ const csvFunction = (ipAddress) => {
                             catch (error)
                             {
                                 logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. ProbeRequest will not be imported in database. Detail error ${error}`, errorLogFile);
-                                deleteRecordsFromDatabase(uniqueIDFile, ipAddress);                                
+                                deleteRecordsFromDatabase("uniqueIDFile", ipAddress);                                
                                 forceContinueOnNextFile = true;
                             }
                         });
                         // INSERT BTLE IN DATABASE
                         if (currentCSVfileBTLE.length> 0 && !forceContinueOnNextFile)
                         {
+                          
+                        
                             //Importam in baza de date PR
                            currentCSVfileBTLE.map(item =>
                             {
                                 try
                                 {
                                     // insert BTLE STRUCTURE IN DATABASE
-                                    if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First time seen"], item["BTLE Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["BTLE Power"], "NULL", "NULL", "NULL", "NULL", item["BTLE ESSID"].replace("\0", ""), "NULL", item["BTLE # packets"], item["BTLE BSSID"], "", "", uniqueIDFile, item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
+                                    if (!insertRecordInDatabaseBulk(ipAddress, DateTime.Now.toString("yyyy-MM-dd HH:mm:ss"), currentUserName, ipAddress, appName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First time seen"], item["BTLE Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["BTLE Power"], "NULL", "NULL", "NULL", "NULL", item["BTLE ESSID"].replace("\0", ""), "NULL", item["BTLE # packets"], item["BTLE BSSID"], "", "", "uniqueIDFile", item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
                                     {
                                         throw new Error("insertRecordInDatabase error! Return not empty");
                                     }
@@ -952,8 +949,8 @@ const csvFunction = (ipAddress) => {
                                 catch (error)
                                 {
                                     logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. BTLE will not be imported in database. Detail error ${error}`, errorLogFile);
-                                    deleteRecordsFromDatabase(uniqueIDFile, ipAddress);
-                                    forceContinueOnNextFile = true;
+                                    deleteRecordsFromDatabase("uniqueIDFile", ipAddress);
+                                 forceContinueOnNextFile = true;
                                 }
                             });
                             
@@ -961,13 +958,13 @@ const csvFunction = (ipAddress) => {
                             {
                                // move file into destination directory
                               
-                                if (moveFileTo(file, destDirImported + "CSV\\", file.name.toLowerCase().replace(".csv", `_${uniqueIDFile}.csv`)))
+                                if (moveFileTo(file, destDirImported + "CSV\\", file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`)))
                                 {
-                                    logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv", `_${uniqueIDFile}.csv`)} .....done.`, logFile);
+                                    logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`)} .....done.`, logFile);
                                 }
                                 else
                                 {
-                                    logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv", `_${uniqueIDFile}.csv`)}`, errorLogFile);
+                                    logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`)}`, errorLogFile);
                                 }
                                 
                             }
@@ -977,7 +974,7 @@ const csvFunction = (ipAddress) => {
                             if (currentCSVfileBTLE.length > 0)
                             {
                                 logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}.BTLE rows=${currentCSVfilePR.length}. BTLE will not be imported in database`, errorLogFile);
-                                forceContinueOnNextFile = true;
+                               forceContinueOnNextFile = true;
                             }
                             
                         }
@@ -985,11 +982,11 @@ const csvFunction = (ipAddress) => {
                         
                         if (!forceContinueOnNextFile){ 
 // move file into destination directory 
-                            if (moveFileTo(file, destDirImported + "CSV\\", file.name.toLowerCase().replace(".csv", `_${uniqueIDFile}.csv`))){
-                             logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv",`_${uniqueIDFile}.csv`)} .....done.`, logFile);
+                            if (moveFileTo(file, destDirImported + "CSV\\", file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`))){
+                             logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv",`_${"uniqueIDFile"}.csv`)} .....done.`, logFile);
                         }
                         else{
-                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv",`_${uniqueIDFile}.csv`)}`, errorLogFile);
+                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "CSV\\" + file.name.toLowerCase().replace(".csv",`_${"uniqueIDFile"}.csv`)}`, errorLogFile);
                         }
                         }
                     }
@@ -997,7 +994,7 @@ const csvFunction = (ipAddress) => {
                     {
                      
                         logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}.ProbeRequest rows=${currentCSVfilePR.length}. ProbeRequest will not be imported in database`, errorLogFile);
-                        forceContinueOnNextFile = true;
+                      //forceContinueOnNextFile = true;
                     }
 
                     
@@ -1008,7 +1005,7 @@ const csvFunction = (ipAddress) => {
                         //log errors
                         logging(ipAddress, currentUserName, `Error detected (forceContinueNextFile=true) for CSV File ${file.name}`, errorLogFile);
                         
-                        if (moveFileTo(file, destDirFaulty + file.name.toLowerCase().replace(".csv", `_${uniqueIDFile}.csv`))){
+                        if (moveFileTo(file, destDirFaulty + file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`))){
                         logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirFaulty + file.name.toLowerCase()} .....done.`, logFile);
                         }
                         else{
@@ -1069,7 +1066,7 @@ const mainImporter = async (req, res, next) => {
 
         logging(ipAddress, currentUserName, "Read configuration file.....done.", logFile);
 
-        processTxtFiles(ipAddress);
+        //processTxtFiles(ipAddress);
         csvFunction(ipAddress);
 
   } catch (error) {

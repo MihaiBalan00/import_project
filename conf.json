@@ -6,7 +6,7 @@
     "errorLogFile": "Logs/errorLog.txt",
     "logFile": "Logs/log.txt",
     "DIRECTORIES": {
-        "sourceDirWifiCSV": "C:\\Users\\user\\Desktop\\FisiereConvertiteKismet",
+        "sourceDirWifiCSV": "C:\\Mihai\\Proiecte\\Imports\\FisiereConvertiteKismet",
         "sourceDirWigle": "",
         "sourceDirOUI": "",
         "destDirFaulty": "",
