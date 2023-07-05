@@ -7,6 +7,13 @@ const { ES } = require('../conf.json');
  * @param datele de importat _data 
  */
 
+const client = new Client7({ node: ES.IP });
+
+const closeElasticClient = () => {
+    client.close();
+  };
+module.exports.closeElasticClient = closeElasticClient;
+
 const insertElastic = async (data, index_dest) => {
     try {
         const client = new Client7({ node: ES.IP })
@@ -34,6 +41,7 @@ const searchElastic = async (search, index_dest) => {
             index: index_dest,
             body: search
         })
+        console.log(body);
         return body;
     } catch (error) {
         console.log(error)
@@ -44,30 +52,30 @@ const searchElastic = async (search, index_dest) => {
 module.exports.searchElastic = searchElastic;
 
 
-const insertBulkElastic = async (data = [], index_dest) => {
+const insertBulkElastic = async ( insertArray = [], index_dest) => {
     try {
-        const client = new Client7({ node: ES.IP })
+       
         let bulkData = [];
-        for (let i = 0; i < data.length; i++) {
-            for (let j = 0; j < data[i].data.length; j++) {
-                bulkData.push(data[i].data[j]);
+        console.log(insertArray);
+        console.log("---");
+        for (let i = 0; i < insertArray.length; i++) {
+
+                bulkData.push({ index: { _index: index_dest } });
+                bulkData.push(insertArray[i]);
             }
-        }
         
         if (bulkData.length === 0)
             return {
                 body: []
             }
         let response = await client.bulk({
-            index: index_dest,
             body: bulkData
         });
-
-        await client.close();
+        
         return response;
     } catch (error) {
         console.log(error)
-        throw new Error('Eroare inserare bulk!')
+        return new Error('Eroare inserare bulk!');
     }
 
 }

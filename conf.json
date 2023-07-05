@@ -9,8 +9,8 @@
         "sourceDirWifiCSV": "C:\\Mihai\\Proiecte\\Imports\\FisiereConvertiteKismet",
         "sourceDirWigle": "",
         "sourceDirOUI": "",
-        "destDirFaulty": "",
-        "destDirImported": ""
+        "destDirFaulty": "C:\\Mihai\\Proiecte\\Imports\\FisiereRele",
+        "destDirImported": "C:\\Mihai\\Proiecte\\Imports\\FisiereImportate"
     },
     "CONFIGS":{
         "userName": "SRSIPDN\\user.sm",
