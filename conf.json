@@ -8,7 +8,7 @@
     "DIRECTORIES": {
         "sourceDirWifiCSV": "C:\\Mihai\\Proiecte\\Imports\\FisiereConvertiteKismet",
         "sourceDirWigle": "",
-        "sourceDirOUI": "",
+        "sourceDirOUI": "C:\\Mihai\\Proiecte\\Imports\\FisierOUI\\ouiFile.txt",
         "destDirFaulty": "C:\\Mihai\\Proiecte\\Imports\\FisiereRele",
         "destDirImported": "C:\\Mihai\\Proiecte\\Imports\\FisiereImportate"
     },

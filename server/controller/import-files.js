@@ -678,9 +678,45 @@ const csvFunction = (ipAddress) => {
      
 }
 
+
+function extractData(filePath) {
+  
+    // Read the file
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+
+    // Split the content into groups based on empty lines
+    const groups = fileContent.split('\r\n\r\n');
+    
+
+    // Process each group
+    const objects = groups.map(group => {
+    // Get the first line of the group
+    
+    const firstLine = group.trim().split('\r\n')[0];
+    
+    // Extract the OUI and PRODUCER information
+    const match = firstLine.match(/([0-9A-Fa-f-]+)\s+\(hex\)\s+(.+)/);
+    if (!match) return null;
+
+    const OUI = match[1]
+    const PRODUCER = match[2].trim();
+
+    // Return the object with extracted data
+    return { OUI, PRODUCER };
+    });
+    return objects;
+}
+
 const mainImporter = async (req, res, next) => {
     const ipAddress = getComputerIp();
     try {
+
+        const filePath = DIRECTORIES.sourceDirOUI;
+        const result = extractData(filePath);
+        
+        console.log(result);
+        //HERE I HAVE LIST WITH ALL OUI - PRODUCER 
+
 
         logging(ipAddress, currentUserName, "Application Start", logFile);
 
@@ -711,6 +747,10 @@ const mainImporter = async (req, res, next) => {
   }
 };
 
+
+
+
 module.exports = {
   mainImporter,
 };
+

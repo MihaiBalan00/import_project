@@ -8,3 +8,15 @@
 15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv is not equal with no of declared column."} 
 15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1AP.kismet.csv is not equal with no of declared column."} 
 15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1AP.kismet.csv is not equal with no of declared column."} 
+15:56:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of null (reading '0')"} 
+15:57:26: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of null (reading '0')"} 
+15:57:50: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of null (reading '0')"} 
+15:58:18: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of null (reading '0')"} 
+16:01:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv is not equal with no of declared column."} 
+16:01:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv is not equal with no of declared column."} 
+16:01:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv is not equal with no of declared column."} 
+16:01:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File telamon_sos-iasi-grajduri_kismet_-20230510-03-00-54-1ap.kismet_uniqueIDFile.csv is not equal with no of declared column."} 
+16:01:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"No of values (AP) from CSV File telamon_sos-iasi-grajduri_kismet_-20230510-03-00-54-1ap.kismet_uniqueIDFile.csv is not equal with no of declared column."} 
+16:07:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of undefined (reading 'forEach')"} 
+16:08:19: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of undefined (reading 'forEach')"} 
+16:10:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Error found while running script: TypeError: Cannot read properties of undefined (reading 'forEach')"} 
