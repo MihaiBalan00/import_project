@@ -1,19 +1,15 @@
-const { searchElastic,closeElasticClient, insertBulkElastic, deleteElastic } = require("../../database/elastic");
+const { insertBulkElastic} = require("../../database/elastic");
 const { ES, errorLogFile, logFile, DIRECTORIES, CONFIGS } = require("../../conf.json");
 const { insertLog } = require("../../Logs/Script/formatLogs");
 const os = require("os");
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+
 
 const currentUserName = CONFIGS.userName;
 let userApplication = CONFIGS.userApplication; 
 let applicationName= CONFIGS.applicationName;
 let functionName= CONFIGS.functionName;
-
-let txtMisiune = "";
-let txtLocatie = "";
-let txtCodAdapter = "";
 
 let currentCSVfileAP = [];
 let currentCSVfileBTLE = [];
@@ -32,10 +28,12 @@ let pairAP = {};
 let pairPR = {};
 let pairBTLE = {};
 
+let bulkInsertValues = [];
+
 let forceContinueOnNextFile = false;
 
 let sourceDirWifiCSV = DIRECTORIES.sourceDirWifiCSV;
-let sourceDirWigle = DIRECTORIES.sourceDirWigle;
+
 let sourceDirOUI = DIRECTORIES.sourceDirOUI;
 let destDirFaulty = DIRECTORIES.destDirFaulty;
 let destDirImported = DIRECTORIES.destDirImported;
@@ -111,7 +109,7 @@ const logAndStopIfNotExisting = (type, dirPath, ipAddress) =>{
 const getFilesFromDirectory= (directoryPath, pattern) => {
     const files = [];
     try {
-      //TODO: to use the asynchronous version fs.readdir with a callback or utilize fs.promises.readdir with promises or async/await.
+      
       const dirents = fs.readdirSync(directoryPath, { withFileTypes: true });
       for (const dirent of dirents) {
         
@@ -138,25 +136,6 @@ const getFilesFromDirectory= (directoryPath, pattern) => {
     return files;
   }
 
-// const checkForFileMask = async(ipAddress) =>{
-
-//     let pairMaskFile = {};
-//     try{
-//       const searchQuery = {"select d.cname,d.cValueInteger from swise.tWiseParameterDescription d where EXISTS (SELECT 1 FROM swise.tState t Where d.cType=t.cID AND t.cCategory ilike 'SystemParameter' and t.cState ilike 'FileMask')"};
-    
-//     let elasticResult = await searchElastic(searchQuery, ES.INDEX_WISE);
-    
-//     if(elasticResult)
-//         elasticResult.hits.hits.map(hit => {pairMaskFile[hit._source["d.cname"]] = hit._source["d.cValueInteger"];});
-
-//     logging(ipAddress, currentUserName, "Function checkForFileMask: checking done.", logFile);
-//     }
-//     catch (error){
-//         logging(ipAddress, currentUserName, `Function checkForFileMask: Error: ${error}`, errorLogFile);       
-//     }
-//     return pairMaskFile;    
-// }
-
 const isFileLocked = (file) => {
     let stream = null;
     try {
@@ -171,195 +150,6 @@ const isFileLocked = (file) => {
     return false;
 }
 
-// const processTxtFiles = (ipAddress) => {
-//     try{
-//         const txtFileList = getFilesFromDirectory(sourceDirWifiCSV, ".txt");
-//         if (txtFileList.length > 0) {
-//             logging(ipAddress, currentUserName, `Txt file type...`, logFile);
-//             logging(ipAddress, currentUserName, `Get all ${txtFileList.length} txt files.....done.`, logFile);              
-            
-//             //const pairFileMask = checkForFileMask(ipAddress);
-
-//             txtFileList.map(file => {
-//                 try {
-//                     let fileNameValues = file.name.split('_');
-            
-//                     if (fileNameValues.length > 3) {
-//                         txtMisiune = fileNameValues[0];
-//                         txtLocatie = fileNameValues[1];
-//                         txtCodAdapter = fileNameValues[2];
-//                     } else {
-//                         return; // Continue to the next iteration of the loop
-//                     }
-//                 } catch (error) {
-//                     logging(ipAddress, currentUserName, `Critical error while getting values from TXT File name ${file.name}. Error: ${error}`, errorLogFile);
-//                 }
-
-//                 try
-//                     {
-//                         logging(ipAddress, currentUserName, `Read TXT File ${file.name} .....done.`, logFile);
-//                         if (isFileLocked(file.path))
-//                         {
-//                             throw new Error(`Txt file ${file.name} is locked`);
-//                         }
-//                         logging(ipAddress, currentUserName, `TXT File ${file.name} is not locked.`, logFile);
-                        
-                        
-//                        // Create a readable stream to read the CSV file
-//                       let stream = fs.createReadStream(file.path);
-
-//                       // Create a readline interface
-//                       let rl = readline.createInterface({
-//                         input: stream,
-//                         crlfDelay: Infinity
-//                       });
-
-
-//                       let fisOk = true;
-//                       // Event handler for each line
-//                       rl.on('line', (line) => {
-                          
-//                             if(!forceContinueOnNextFile)
-//                             {
-//                               if (line!=="") {
-//                                   let coords = line.split(" ");
-//                                   if (coords.length >= 2) {
-//                                       let latit = parseFloat(coords[0]);
-//                                       let longit = parseFloat(coords[1]);
-                          
-  
-//                                       try {
-//                                         const searchQuery = {
-//                                           query: {
-//                                             function_score: {
-//                                               query: {
-//                                                 bool: {
-//                                                   must: [
-//                                                     { match: { fieldName: `${new Date().toISOString()}` } },
-//                                                     { match: { fieldName: `${userApplication}` } },
-//                                                     { match: { fieldName: `${ipAddress}` } },
-//                                                     { match: { fieldName: `${applicationName}` } },
-//                                                     { match: { fieldName: `${functionName}` } },
-//                                                     { match: { fieldName: `${txtLocatie}` } },
-//                                                     { match: { fieldName: `${longit} ${latit}` } },
-//                                                     { match: { fieldName: `${txtLocatie}` } }
-//                                                   ]
-//                                                 }
-//                                               },
-//                                               functions: [
-//                                                 {
-//                                                   filter: { match_all: {} },
-//                                                   script_score: {
-//                                                     script: {
-//                                                       source: "Math.random()"
-//                                                     }
-//                                                   }
-//                                                 }
-//                                               ],
-//                                               boost_mode: "replace"
-//                                             }
-//                                           }
-//                                         };
-                                      
-//                                       let elasticResult = searchElastic(searchQuery, ES.INDEX_WISE);
-//                                       } catch (error) {
-//                                           logging(ipAddress, currentUserName, `Eroare la inserarea coordonatelor unei locatii noi: ${error}`, errorLogFile);
-//                                       }
-                          
-                                      
-//                                        try {
-//                                         const searchQuery = {
-//                                           query: {
-//                                             function_score: {
-//                                               query: {
-//                                                 bool: {
-//                                                   must: [
-//                                                     { match: { fieldName: `${new Date().toISOString()}` } },
-//                                                     { match: { fieldName: `${userApplication}` } },
-//                                                     { match: { fieldName: `${ipAddress}` } },
-//                                                     { match: { fieldName: `${applicationName}` } },
-//                                                     { match: { fieldName: `${functionName}` } },
-//                                                     { match: { fieldName: `` } }, // Add the appropriate field name for this match
-//                                                     { match: { fieldName: `${txtCodAdapter}` } },
-//                                                     { match: { fieldName: `` } }, // Add the appropriate field name for this match
-//                                                     { match: { fieldName: `${txtCodAdapter}` } },
-//                                                     { match: { fieldName: `` } }, // Add the appropriate field name for this match
-//                                                     { match: { fieldName: `1` } },
-//                                                     { match: { fieldName: `${txtLocatie}` } },
-//                                                     { match: { fieldName: `${txtMisiune}` } },
-//                                                     { match: { fieldName: `Enabled` } }
-//                                                   ]
-//                                                 }
-//                                               },
-//                                               functions: [
-//                                                 {
-//                                                   filter: { match_all: {} },
-//                                                   script_score: {
-//                                                     script: {
-//                                                       source: "Math.random()"
-//                                                     }
-//                                                   }
-//                                                 }
-//                                               ],
-//                                               boost_mode: "replace"
-//                                             }
-//                                           }
-//                                         };
-//                                         let elasticResult = searchElastic(searchQuery, ES.INDEX_WISE);
-//                                       } catch (error) {
-//                                           logging(ipAddress, currentUserName, `Eroare la inserarea coordonatelor unui echipament nou: ${error}`, errorLogFile);
-//                                       }
-//                                   } else {
-//                                       fisOk = false;
-//                                   }
-//                               }
-//                           }
-//                         });
-                        
-//                         stream.close();
-                        
-//                         if (fisOk === true)
-//                         {
-//                             //moveFileTo(file, "prelucrate");
-                            
-//                             if (moveFileTo(file, destDirImported + "\\" + file.name.toLowerCase().replace(".txt", `_${new Date().toISOString().replace(/[-:.]/g, '')}.txt`)))
-//                             {
-//                                logging(ipAddress, currentUserName, `TXT File ${file.name} moved to ${destDirImported + file.name.toLowerCase()} .....done.`, logFile);                         
-//                             }
-//                             else
-//                             {
-//                                 logging(ipAddress, currentUserName, `Error moving TXT File ${file.name} to ${destDirImported + file.name.toLowerCase()}`, errorLogFile);              
-//                             }
-                            
-//                         }
-//                         else
-//                         {
-//                             //moveFileTo(file, "necofnorme");
-//                             if (moveFileTo(file, destDirFaulty + "\\" + file.name.toLowerCase().replace(".txt", `_${new Date().toISOString().replace(/[-:.]/g, '')}.txt`)))
-//                             {
-//                                 logging(ipAddress, currentUserName, `TXT File ${file.name} moved to ${destDirFaulty + file.name.toLowerCase()} .....done.`, logFile);              
-//                             }
-//                             else
-//                             {
-//                                 logging(ipAddress, currentUserName, `Error moving TXT File ${file.name} to ${destDirFaulty + file.name.toLowerCase()}`, errorLogFile);              
-//                             }
-//                         }
-
-//                     }catch (error)
-//                         {
-//                         logging(ipAddress, currentUserName, `Error ${error}`, errorLogFile);
-//                         }
-//                 });}
-//                 else
-//                 {
-//                     logging(ipAddress, currentUserName, `Txt file type not found!`, logFile);                
-//                 }
-//     }
-//     catch(error){
-//         throw new Error(`Error while processing txt files: ${error}`);
-//     }
-// }
-
 const moveFileTo = (file, destinationPath) => {
     try {
       
@@ -370,58 +160,6 @@ const moveFileTo = (file, destinationPath) => {
     return true;
 }
 
-
-// const getIDFromWiseDatabase = (xUserApplication, xIP, xApplicationName, xFunctionName, xFileName, xDescriptionFile,  xSizeFile) => 
-//         {
-//             let result = -1;
-//             try
-//             {
-//                 const searchQuery = {
-//                                         query: {
-//                                           function_score: {
-//                                             query: {
-//                                               bool: {
-//                                                 must: [
-//                                                   { match: { fieldName: `${new Date().toISOString()}` } },
-//                                                   { match: { fieldName: `${xUserApplication}` } },
-//                                                   { match: { fieldName: `${xIP}` } },
-//                                                   { match: { fieldName: `${xApplicationName}` } },
-//                                                   { match: { fieldName: `${xFunctionName}` } },
-//                                                   { match: { fieldName: `${xFileName}` } },
-//                                                   { match: { fieldName: `${xDescriptionFile}` } },
-//                                                   { match: { fieldName: `${xSizeFile}` } },
-//                                                   { match: { fieldName: `${xIP}` } }
-//                                                 ]
-//                                               }
-//                                             },
-//                                             functions: [
-//                                               {
-//                                                 filter: { match_all: {} },
-//                                                 script_score: {
-//                                                   script: {
-//                                                     source: "Math.random()"
-//                                                   }
-//                                                 }
-//                                               }
-//                                             ],
-//                                             boost_mode: "replace"
-//                                           }
-//                                         }
-//                                       };
-
-//                 result = searchElastic(searchQuery, ES.INDEX_WISE); 
-            
-//                 return result;
-//             }
-//             catch (error)
-//             {
-//                 logging(ipAddress, currentUserName, `Function getIDFromWiseDatabase: Error: ${error}`, errorLogFile);
-//                 return result;
-//             }
-            
-//         }
-
-
 const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUserApplication, xUserSender, xCodeMission, xLocation, xCodeAdapter, xCodeSystem, xMacMain, xRecordType, xFirstTimeSeen, xLastTimeSeen, xChannel, xSpeed, xPrivacy, xCipher, xAuthentication, xPower, xBeacons, xIv, xLanIP, xIdLength, xSSID, xKey, xPackets, xMacAP, xMessage, xObservations, xIDFileName, xLatitude, xLongitude, xImportFlag) =>
         {
             
@@ -429,15 +167,15 @@ const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUse
             {
                 if (xLongitude === "0" || xLongitude === "")
                 {
-                    xLongitude = "NULL";
+                    xLongitude = "";
                 }
                 if (xLatitude === "0" || xLatitude === "")
                 {
-                    xLatitude = "NULL";
+                    xLatitude = "";
                 }
                 xSSID = xSSID.replace("'", "''");
 
-                const records = [
+                const records =
                   {
                     userTime: xUserTime,
                     user: xUserx,
@@ -472,11 +210,10 @@ const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUse
                     latitude: xLatitude,
                     longitude: xLongitude,
                     importflag: xImportFlag
-                  }
-                ];
+                  };
 
-                insertBulkElastic(records, ES.INDEX_WISE);
-
+                bulkInsertValues.push(records);
+                
                 return true;
                
             }
@@ -487,29 +224,6 @@ const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUse
             }
             
         }
-
-
-const deleteRecordsFromDatabase = async(xIDFileName, ipAddress) =>
-        {
-            try
-            {
-              const searchQuery = {
-                term: {
-                  cIDFileName: xIDFileName
-                }
-              };
-                await deleteElastic(searchQuery); //,indexName);
-
-                logging(ipAddress, currentUserName, `Rows deleted from database: ${rowsDeleted}`, logFile);
-                return true;
-            }
-            catch (error)
-            {
-                logging(ipAddress, currentUserName, `Function fRecordSet_New: Error: ${error}`, errorLogFile);
-                return false;
-            }
-        }
-
 
 const csvFunction = (ipAddress) => {
 
@@ -522,6 +236,9 @@ const csvFunction = (ipAddress) => {
     {
      
      csvFileList.map(file =>{
+
+
+        bulkInsertValues = [];
         forceContinueOnNextFile = false;
         currentCSVfileAP = [];
         currentCSVfilePR = [];
@@ -537,18 +254,15 @@ const csvFunction = (ipAddress) => {
         columnBTLENames = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
         columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
         //**************************************************************************************
-            try
+            
+        try
               {
                   let fileNameValues = file.name.split('_');
                   fileNameLocation = fileNameValues[0];
                   fileNameMission = fileNameValues[1];
                   fileNameSystemCode = fileNameValues[2];
                   fileNameAdapterCode = fileNameValues[3];
-                  //pairFileMask = checkForFileMask(ipAddress);
-                  // fileNameLocation = pairFileMask["codeLocation"] === -1 ? "-" : fileNameValues[pairFileMask["codeLocation"]];
-                  // fileNameMission = pairFileMask["codeMission"] === -1 ? "-" : fileNameValues[pairFileMask["codeMission"]];
-                  // fileNameSystemCode = pairFileMask["codeSystem"] === -1 ? "-" : fileNameValues[pairFileMask["codeSystem"]];
-                  // fileNameAdapterCode = pairFileMask["codeAdapter"] === -1 ? "-" : fileNameValues[pairFileMask["codeAdapter"]];
+         
               }
               catch (error)
               {
@@ -558,14 +272,6 @@ const csvFunction = (ipAddress) => {
                   return;
               }
 
-           //get an ID from dataBase to store session for each file. ID will be used to rollback data if error occur
-          //  uniqueIDFile = getIDFromWiseDatabase(userApplication,ipAddress,applicationName,functionName,file.name,"",file.length);
-          //  if (uniqueIDFile === -1){
-          //      logging(ipAddress, currentUserName, `Critical error while getting ID from Database for CSV File ${file.name}.`, errorLogFile);
-          //      forceContinueOnNextFile=true;
-          //      return; 
-          //  }
-           
            try
                 {
                   
@@ -577,18 +283,15 @@ const csvFunction = (ipAddress) => {
                         }
                     logging(ipAddress, currentUserName, `CSV File ${file.name}  is not locked.`, logFile);
                     
-                     
-                    fs.readFile(file.path, 'utf8', (err, data) => {
-                      if (err) {
-                        console.error(err);
-                        return;
-                      }
+                   
+                        const data = fs.readFileSync(file.path, 'utf8');
+                      
                       
                       const lines = data.split('\r\n');
                       
                       lines.forEach((line) => {
                         // Process the line here
-                        
+
                           if(forceContinueOnNextFile===false && line!=="") {
                             
                             // Check if it is AP by comparing first 5                       
@@ -741,7 +444,7 @@ const csvFunction = (ipAddress) => {
                              {
                                 
                                  csvPRValues = line.split(',').slice(0,columnPRNames.length-1);
-                                
+                                 
                                  probedESSID = line.split(',');
                                  let ESSID = [];
                                  if(probedESSID.length>columnPRNames.length)
@@ -764,14 +467,16 @@ const csvFunction = (ipAddress) => {
                                      pairPR["Probed ESSID"] = ESSID;
                                      //add line (dictionary) in csvList
                                      
-                                     let pairRPLine = pairPR;
-                                     currentCSVfilePR.push(pairRPLine);
-                                  
+                                     let pairPRLine = pairPR;
+                                     
+                                     currentCSVfilePR.push(pairPRLine);
+                                     
                                      pairPR = {};
                                      return;
                                  }
                                  else
                                  {
+                                    
                                      if (line.trim().length === 0) { return; } //Daca s-a terminat brusc fisierul
                                      logging(ipAddress, currentUserName, `No of values (PR) from CSV File ${file.name} is not equal with no of declared column.`, errorLogFile);
                                     
@@ -784,8 +489,7 @@ const csvFunction = (ipAddress) => {
                              {
                               
                                  csvBTLEValues = line.split(',');
-                                // string[] probedESSID = line.Split(',').Skip(columnPRNames.Length - 1).ToArray();
-                                // string ESSID = string.Join(",", probedESSID);
+                                
                                  if (csvBTLEValues.length === columnBTLENames.length)
                                  {
  
@@ -794,10 +498,8 @@ const csvFunction = (ipAddress) => {
                                          //add a line with values in dictionary
                                          pairBTLE[columnBTLENames[i]] = csvBTLEValues[i].trim();
                                      }
-                                     //add last line with probed ESSID                                    
-                                     //pairBTLE.Add("Probed ESSID", csvBTLEValues["BTLE ESSID"]);
-                                     //add line (dictionary) in csvList
-                                     if(!pairBTLE["BTLE ESSID"])  //for backword compatibility SM 20230213
+                                     
+                                     if(!pairBTLE["BTLE ESSID"])  
                                      {
                                          pairBTLE["BTLE ESSID"] = "";
                                      }
@@ -826,15 +528,17 @@ const csvFunction = (ipAddress) => {
                     if (currentCSVfileAP.length > 0 && !forceContinueOnNextFile)
                     {
                         
+                        currentCSVfileAP = currentCSVfileAP.slice(1,currentCSVfileAP.length);
                         //Importam in baza de date AP
+                        
                         currentCSVfileAP.map( item => 
                         {
-                          
+                            
                             try
                             {
                       // insert AP STRUCTURE IN DATABASE     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First time seen"], item["Last time seen"], item["channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["# beacons"], item["# IV"], item["LAN IP"], item["ID-length"], item["ESSID"].replace("\0", " "), item["Key"], "", item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0"))
+                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First time seen"], item["Last time seen"], item["channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["# beacons"], item["# IV"], item["LAN IP"], item["ID-length"], item["ESSID"].replace("\0", " "), item["Key"], "", item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "", "0"))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -847,20 +551,24 @@ const csvFunction = (ipAddress) => {
                                 forceContinueOnNextFile = true;
                             } 
                         });
+
+                        
+                        insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
+                        
                     }
                     
 
                     
                     if (currentCSVfilePR.length > 0 && !forceContinueOnNextFile)
                     {
-                      
+                        currentCSVfilePR=currentCSVfilePR.slice(1,currentCSVfilePR.length);
                         //Importam in baza de date PR
                         currentCSVfilePR.map(item =>
                         {
                             try
                             {
-//insert PROBE REQUEST STRUCTURE IN DATABASE
-                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First time seen"], item["Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["Power"], "NULL", "NULL", "NULL", "NULL", item["Probed ESSID"].replace("\0", " "), "NULL", item["# packets"], item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "NULL", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "NULL", "0", ))
+
+                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertPRStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First time seen"], item["Last time seen"], "", "", "", "", "", item["Power"], "", "", "", "", item["Probed ESSID"].replace("\0", " "), "", item["# packets"], item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "", "0", ))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -872,14 +580,18 @@ const csvFunction = (ipAddress) => {
                                 deleteRecordsFromDatabase("uniqueIDFile", ipAddress);                                
                                 forceContinueOnNextFile = true;
                             }
-                        });}
+                        });
+
+                        
+                        insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
+                    }
                         
 
                         // INSERT BTLE IN DATABASE
                         
                         if (currentCSVfileBTLE.length> 0 && !forceContinueOnNextFile)
                         {
-                          
+                            currentCSVfileBTLE=currentCSVfileBTLE.slice(1,currentCSVfileBTLE.length);
                             //Importam in baza de date PR
                            currentCSVfileBTLE.map(item =>
                             {
@@ -887,7 +599,7 @@ const csvFunction = (ipAddress) => {
                                 {
                                     // insert BTLE STRUCTURE IN DATABASE
                                     //DateTime.Now.toString("yyyy-MM-dd HH:mm:ss")
-                                    if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First time seen"], item["BTLE Last time seen"], "NULL", "NULL", "NULL", "NULL", "NULL", item["BTLE Power"], "NULL", "NULL", "NULL", "NULL", item["BTLE ESSID"].replace("\0", " "), "NULL", item["BTLE # packets"], item["BTLE BSSID"], "", "", "uniqueIDFile", item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
+                                    if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertBTLEStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First time seen"], item["BTLE Last time seen"], "", "", "", "", "", item["BTLE Power"], "", "", "", "", item["BTLE ESSID"].replace("\0", " "), "", item["BTLE # packets"], item["BTLE BSSID"], "", "", "uniqueIDFile", item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
                                     {
                                         throw new Error("insertRecordInDatabase error! Return not empty");
                                     }
@@ -899,7 +611,11 @@ const csvFunction = (ipAddress) => {
                                     deleteRecordsFromDatabase("uniqueIDFile", ipAddress);
                                  forceContinueOnNextFile = true;
                                 }
-                            });}
+                            });
+                        
+                            
+                            insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
+                        }
                             
                         // INSERT BTLE IN DATABASE
             
@@ -935,7 +651,7 @@ const csvFunction = (ipAddress) => {
                         }
 
                     }
-                  }); 
+                  
                     //application end?
                     
                 }// Main try                   
@@ -947,7 +663,7 @@ const csvFunction = (ipAddress) => {
                 
           
      });
-   
+        return;
     }
     else
             {
@@ -956,7 +672,8 @@ const csvFunction = (ipAddress) => {
           
 
             logging(ipAddress, currentUserName, "Application End", logFile);
-            closeElasticClient();
+            
+            
             //Close DB connection if open.
      
 }
@@ -968,28 +685,23 @@ const mainImporter = async (req, res, next) => {
         logging(ipAddress, currentUserName, "Application Start", logFile);
 
         appendPathSeparatorIfMissing(sourceDirWifiCSV);
-        //appendPathSeparatorIfMissing(sourceDirWigle);
+        
         //appendPathSeparatorIfMissing(sourceDirOUI);
         appendPathSeparatorIfMissing(destDirFaulty);
         appendPathSeparatorIfMissing(destDirImported);
 
         logAndStopIfNotExisting("sourceDirWifiCSV", sourceDirWifiCSV, ipAddress);
-        //logAndStopIfNotExisting("sourceDirWigle", sourceDirWigle, ipAddress);
+       
         //logAndStopIfNotExisting("sourceDirOUI", sourceDirOUI, ipAddress);
 
         createDirectoryIfNotExists(destDirFaulty);
-        //createDirectoryIfNotExists(destDirFaulty + "CSV\\");
-        //createDirectoryIfNotExists(destDirFaulty + "Wigle\\");
-        //createDirectoryIfNotExists(destDirFaulty + "OUI\\");
+
         createDirectoryIfNotExists(destDirImported);
-       // createDirectoryIfNotExists(destDirImported + "CSV\\");
-        //createDirectoryIfNotExists(destDirImported + "Wigle\\");
-        //createDirectoryIfNotExists(destDirImported + "OUI\\");
 
         logging(ipAddress, currentUserName, "Read configuration file.....done.", logFile);
 
-        //processTxtFiles(ipAddress);
         csvFunction(ipAddress);
+
 
   } catch (error) {
       logging(ipAddress, currentUserName, `Error found while running script: ${error}`, errorLogFile);

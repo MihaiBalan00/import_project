@@ -1,147 +1,419 @@
-11:10:00: Listening at 5005 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 10 CSV Files.....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:10:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
-11:10:18: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
-11:10:18: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:10:19: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1client.kismet_uniqueIDFile.csv .....done."} 
-11:10:19: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:10:20: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:10:21: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1client.kismet_uniqueIDFile.csv .....done."} 
-11:10:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1btle.kismet_uniqueIDFile.csv .....done."} 
-11:13:48: Listening at 5005 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 10 CSV Files.....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
-11:13:57: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:14:14: Listening at 5005 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 6 CSV Files.....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1client.kismet_uniqueIDFile.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1client.kismet_uniqueIDFile.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:14:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1btle.kismet_uniqueIDFile.csv .....done."} 
-11:15:25: Listening at 5005 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 10 CSV Files.....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
-11:15:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:17:08: Listening at 5005 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
-11:17:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:17:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv  is not locked."} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:17:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
-11:17:42: Listening at 5005 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueIDFile.csv  is not locked."} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:17:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
-11:19:32: Listening at 5005 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application End"} 
-11:19:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:30:04: Listening at 5005 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:30:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv  is not locked."} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:30:23: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 11 CSV Files.....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1client.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1client.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv .....done."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv  is not locked."} 
+14:30:55: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1client.kismet_uniqueIDFile.csv .....done."} 
+14:32:45: Listening at 5005 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+14:33:04: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:33:34: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+14:34:05: Listening at 5005 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv  is not locked."} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:34:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:34:47: Listening at 5005 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv  is not locked."} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:34:56: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:35:11: Listening at 5005 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:35:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:37:31: Listening at 5005 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+14:37:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
+14:39:48: Listening at 5005 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv  is not locked."} 
+14:39:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv  is not locked."} 
+14:40:01: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv  is not locked."} 
+14:40:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:40:22: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:51: Listening at 5005 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:41:53: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:11: Listening at 5005 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:15: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:43:14: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:52:09: Listening at 5005 
+14:52:53: Listening at 5005 
+14:53:07: Listening at 5005 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:53:08: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:53:09: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:54:42: Listening at 5005 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:54:49: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:56:13: Listening at 5005 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:56:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:56:35: Listening at 5005 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:56:37: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:57:11: Listening at 5005 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:57:11: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:57:22: Listening at 5005 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+14:57:24: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:02:50: Listening at 5005 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+15:02:52: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:04:31: Listening at 5005 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+15:04:33: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:05:18: Listening at 5005 
+15:05:27: Listening at 5005 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:05:29: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:05:42: Listening at 5005 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+15:05:45: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:08:04: Listening at 5005 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 1 CSV Files.....done."} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv .....done."} 
+15:08:06: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueidfile_uniqueIDFile.csv  is not locked."} 
+15:10:33: Listening at 5005 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
+15:10:38: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+15:11:17: Listening at 5005 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 3 CSV Files.....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
+15:11:17: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: Listening at 5005 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Application Start"} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read configuration file.....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV files type"} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Get all 43 CSV Files.....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_deveselu-sud_kismet_-20230510-03-00-43-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Deveselu-Sud_Kismet_-20230510-03-00-43-1AP.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_dig-galati-braila_kismet_-20230509-11-01-29-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Dig-Galati-Braila_Kismet_-20230509-11-01-29-1CLIENT.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Hotel-International-Sinaia_Kismet_-20230509-22-39-10-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_hotel-international-sinaia_kismet_-20230509-22-39-10-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_magnolia_kismet_-20230510-05-46-50-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Magnolia_Kismet_-20230510-05-46-50-1CLIENT.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv  is not locked."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1BTLE.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1AP.kismet.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Moravita_Kismet_-20230510-03-21-21-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_moravita_kismet_-20230510-03-21-21-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:46: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ori-galati_kismet_-20230510-03-00-55-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ori-galati_kismet_-20230510-03-00-55-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_ORI-Galati_Kismet_-20230510-03-00-55-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ori-galati_kismet_-20230510-03-00-55-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_petea-dn19a_kismet_-20230422-21-00-25-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_petea-dn19a_kismet_-20230422-21-00-25-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_petea-dn19a_kismet_-20230422-21-00-25-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Petea-DN19A_Kismet_-20230422-21-00-25-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-01-01-55-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-01-01-55-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-01-01-55-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-01-01-55-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-03-01-59-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-03-01-59-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ptf-giurgiu-intrare-truck_kismet_-20230510-03-00-54-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ptf-giurgiu-intrare-truck_kismet_-20230510-03-00-54-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_ptf-giurgiu-intrare-truck_kismet_-20230510-03-00-54-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_PTF-Giurgiu-intrare-truck_Kismet_-20230510-03-00-54-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sinaia-strada-saniusului-m2_kismet_-20230510-03-00-56-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sinaia-strada-saniusului-m2_kismet_-20230510-03-00-56-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Porumbaru_Kismet_-20230509-03-01-59-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_porumbaru_kismet_-20230509-03-01-59-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sinaia-strada-saniusului-m2_kismet_-20230510-03-00-56-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sinaia-Strada-Saniusului-M2_Kismet_-20230510-03-00-56-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sos-iasi-grajduri_kismet_-20230510-03-00-54-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sos-iasi-grajduri_kismet_-20230510-03-00-54-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_sos-iasi-grajduri_kismet_-20230510-03-00-54-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_soseaua-iasi-tomesti_kismet_-20230510-04-18-46-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Sos-Iasi-Grajduri_Kismet_-20230510-03-00-54-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_soseaua-iasi-tomesti_kismet_-20230510-04-18-46-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_soseaua-iasi-tomesti_kismet_-20230510-04-18-46-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_totti_2_kismet_-20230510-03-01-42-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_totti_2_kismet_-20230510-03-01-42-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Soseaua-Iasi-Tomesti_Kismet_-20230510-04-18-46-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_totti_2_kismet_-20230510-03-01-42-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Totti_2_Kismet_-20230510-03-01-42-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_trecere-bac-galati-tulcea_kismet_-20230510-03-00-41-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1AP.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1BTLE.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1BTLE.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_trecere-bac-galati-tulcea_kismet_-20230510-03-00-41-1btle.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_trecere-bac-galati-tulcea_kismet_-20230510-03-00-41-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1AP.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Trecere-bac-Galati-Tulcea_Kismet_-20230510-03-00-41-1BTLE.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1AP.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_vama-veche-iesire_kismet_-20230510-03-00-41-1ap.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"Read CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv  is not locked."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1CLIENT.kismet.csv moved to C:\\Mihai\\Proiecte\\Imports\\FisiereImportate\\telamon_vama-veche-iesire_kismet_-20230510-03-00-41-1client.kismet_uniqueIDFile.csv .....done."} 
+15:12:47: {"ipAddress":"172.17.56.91","userName":"SRSIPDN\\user.sm","message":"CSV File Telamon_Vama-Veche-iesire_Kismet_-20230510-03-00-41-1AP.kismet.csv  is not locked."} 
