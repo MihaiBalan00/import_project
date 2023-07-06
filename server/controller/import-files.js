@@ -9,6 +9,7 @@ let options = {timeZone: 'Europe/Bucharest', year: 'numeric', month: '2-digit', 
 
 let ouiList;
 
+
 const currentUserName = CONFIGS.userName;
 let userApplication = CONFIGS.userApplication; 
 let applicationName= CONFIGS.applicationName;
@@ -169,6 +170,10 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
             
             let xMacProducer = assignProducerToOUI(xMacMain, ouiList);
 
+            let isRandomMac = xMacMain[1] === '2' || xMacMain[1] === '6' || xMacMain[1].toLowerCase() === 'a' || xMacMain[1].toLowerCase() === 'e' ? true : false
+
+            //What if it's random generated, but it is found in OUI list?
+
             try
             {
                 if (xLongitude === "0" || xLongitude === "")
@@ -192,6 +197,7 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
                     codeSystem: xCodeSystem,
                     macmain: xMacMain,
                     producer: xMacProducer,
+                    isMacRandom: isRandomMac,
                     recordtype: xRecordType,
                     firsttimeseen: xFirstTimeSeen,
                     lasttimeseen: xLastTimeSeen,
@@ -245,6 +251,7 @@ const csvFunction = (ipAddress) => {
 
         bulkInsertValues = [];
         forceContinueOnNextFile = false;
+        let notImportedLine = false;
         currentCSVfileAP = [];
         currentCSVfilePR = [];
         currentCSVfileBTLE = [];
@@ -294,7 +301,7 @@ const csvFunction = (ipAddress) => {
                       
                       const lines = data.split('\r\n');
                       
-                      
+                      notImportedLine = false;
 
                       lines.forEach((line) => {
                         // Process the line here
@@ -441,7 +448,7 @@ const csvFunction = (ipAddress) => {
                                 {
                                   if(line.trim().length === 0){return; }
                                    logging(ipAddress, currentUserName, `No of values (AP) from CSV File ${file.name} is not equal with no of declared column.`, errorLogFile);
-                                   //TODO: Ce fac cand o coloana nu are nr de campuri corecte?
+                                   notImportedLine = true;
                                 }
 
                             }
@@ -487,7 +494,7 @@ const csvFunction = (ipAddress) => {
                                     
                                      if (line.trim().length === 0) { return; } //Daca s-a terminat brusc fisierul
                                      logging(ipAddress, currentUserName, `No of values (PR) from CSV File ${file.name} is not equal with no of declared column.`, errorLogFile);
-                                    
+                                    notImportedLine = true;
                                  }
                              }
                              
@@ -521,7 +528,7 @@ const csvFunction = (ipAddress) => {
                                  {
                                      if (line.trim().length === 0) { return; } //Daca s-a terminat brusc fisierul
                                      logging(ipAddress, currentUserName, `No of values (BTLE) from CSV File ${file.name} is not equal with no of declared column.`, errorLogFile);
-                                     forceContinueOnNextFile = true;
+                                     notImportedLine = true;
                                  }
                              }
                             
@@ -548,14 +555,14 @@ const csvFunction = (ipAddress) => {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                                 if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First Time Seen"], item["Last Time Seen"], item["Channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["#Beacons"], item["#IV"], item["LAN IP"], item["ID-Length"], item["ESSID"].replace("\0", " ").replace("'", "''"), item["Key"], "", item["BSSID"], "", "", uniqueIDFile + item["First Time Seen"], item["Longitudine"], item["Latitudine"], "0"))
                                 {
+                                    
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
 
                             }
                             catch (error)
                             {
-                                logging(ipAddress, currentUserName, `Error importing AP structure from CSV File ${file.name}. AP will not be imported in database! Detail error ${error}`, errorLogFile);
-                                                             
+                                logging(ipAddress, currentUserName, `Error importing AP file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);                             
                                 forceContinueOnNextFile = true;
                             } 
                         });
@@ -582,8 +589,7 @@ const csvFunction = (ipAddress) => {
                             }
                             catch (error)
                             {
-                                logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. PR will not be imported in database. Detail error ${error}`, errorLogFile);
-                                                              
+                                logging(ipAddress, currentUserName, `Error importing PR file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);                              
                                 forceContinueOnNextFile = true;
                             }
                         });
@@ -613,8 +619,7 @@ const csvFunction = (ipAddress) => {
                                 }
                                 catch (error)
                                 {
-                                    logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. BTLE will not be imported in database. Detail error ${error}`, errorLogFile);
-                                    
+                                    logging(ipAddress, currentUserName, `Error importing BTLE file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);
                                  forceContinueOnNextFile = true;
                                 }
                             });
@@ -626,34 +631,29 @@ const csvFunction = (ipAddress) => {
                         // INSERT BTLE IN DATABASE
             
                         
-                        if (!forceContinueOnNextFile){ 
+                        if (!forceContinueOnNextFile && !notImportedLine){ 
 // move file into destination directory 
-                            if (moveFileTo(file, destDirImported + '\\' + file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`))){
-                             logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "\\" + file.name.toLowerCase().replace(".csv",`_${"uniqueIDFile"}.csv`)} .....done.`, logFile);
+                            if (moveFileTo(file, destDirImported + '\\' + file.name)){
+                             logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirImported + "\\" + file.name} .....done.`, logFile);
+                            }
+                             else{
+                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "\\" + file.name}`, errorLogFile);
+                            forceContinueOnNextFile = true;
+                            }
                         }
-                        else{
-                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "\\" + file.name.toLowerCase().replace(".csv",`_${"uniqueIDFile"}.csv`)}`, errorLogFile);
-                        }
-                        }
-                  
-                    else
-                    {
-                     
-                        logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. It will not be moved to Imported Files`, errorLogFile);
-                      forceContinueOnNextFile = true;
-                    }
+        
 
                     
-                    if (forceContinueOnNextFile)
+                    if (forceContinueOnNextFile || notImportedLine)
                     {
 
-                        logging(ipAddress, currentUserName, `Error detected (forceContinueNextFile=true) for CSV File ${file.name}`, errorLogFile);
+                        logging(ipAddress, currentUserName, `Error detected (forceContinueNextFile=true or LineNotImported) for CSV File ${file.name}`, errorLogFile);
                         
-                        if (moveFileTo(file, destDirFaulty + '\\' + file.name.toLowerCase().replace(".csv", `_${"uniqueIDFile"}.csv`))){
-                        logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirFaulty + file.name.toLowerCase()} .....done.`, logFile);
+                        if (moveFileTo(file, destDirFaulty + '\\' + file.name)){
+                        logging(ipAddress, currentUserName, `CSV File ${file.name} moved to ${destDirFaulty + file.name} .....done.`, logFile);
                         }
                         else{
-                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirFaulty + file.name.toLowerCase()}`, errorLogFile);
+                            logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirFaulty + file.name}`, errorLogFile);
                         }
 
                     }
