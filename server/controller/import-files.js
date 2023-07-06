@@ -5,6 +5,9 @@ const os = require("os");
 const fs = require('fs');
 const path = require('path');
 
+let options = {timeZone: 'Europe/Bucharest', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
+
+let ouiList;
 
 const currentUserName = CONFIGS.userName;
 let userApplication = CONFIGS.userApplication; 
@@ -160,9 +163,12 @@ const moveFileTo = (file, destinationPath) => {
     return true;
 }
 
-const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUserApplication, xUserSender, xCodeMission, xLocation, xCodeAdapter, xCodeSystem, xMacMain, xRecordType, xFirstTimeSeen, xLastTimeSeen, xChannel, xSpeed, xPrivacy, xCipher, xAuthentication, xPower, xBeacons, xIv, xLanIP, xIdLength, xSSID, xKey, xPackets, xMacAP, xMessage, xObservations, xIDFileName, xLatitude, xLongitude, xImportFlag) =>
+const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAdapter, xCodeSystem, xMacMain, xRecordType, xFirstTimeSeen, xLastTimeSeen, xChannel, xSpeed, xPrivacy, xCipher, xAuthentication, xPower, xBeacons, xIv, xLanIP, xIdLength, xSSID, xKey, xPackets, xMacAP, xMessage, xObservations, xIDFileName, xLatitude, xLongitude, xImportFlag) =>
         {
+            let currentTime = new Date().toLocaleString('en-US', options).replace(/[/,\s:]/g, '').substr(4, 4) + new Date().toLocaleString('en-US', options).replace(/[/,\s:]/g, '').substr(0, 4) + "T" + new Date().toLocaleString('en-US', options).replace(/[/,\s:]/g, '').substr(8);
             
+            let xMacProducer = assignProducerToOUI(xMacMain, ouiList);
+
             try
             {
                 if (xLongitude === "0" || xLongitude === "")
@@ -173,20 +179,19 @@ const insertRecordInDatabaseBulk = ( ipAddress, xUserTime, xUserx, xUserIP, xUse
                 {
                     xLatitude = "";
                 }
-                xSSID = xSSID.replace("'", "''");
 
                 const records =
                   {
-                    userTime: xUserTime,
-                    user: xUserx,
-                    userIP: xUserIP,
-                    userApplication: xUserApplication,
-                    userSender: xUserSender,
-                    ccodemission: xCodeMission,
+                    userTime: currentTime,
+                    user: currentUserName,
+                    userIP: ipAddress,
+                    userApplication: applicationName,
+                    codeMission: xCodeMission,
                     location: xLocation,
                     codeAdapter: xCodeAdapter,
                     codeSystem: xCodeSystem,
                     macmain: xMacMain,
+                    producer: xMacProducer,
                     recordtype: xRecordType,
                     firsttimeseen: xFirstTimeSeen,
                     lasttimeseen: xLastTimeSeen,
@@ -246,7 +251,7 @@ const csvFunction = (ipAddress) => {
         foundAP = false;
         foundPR = false;
         foundBTLE = false;
-
+        let uniqueIDFile = "";
 
          //********************************** RESET DICTIONARY VALUES****************************
         columnAPNames = ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key", "Latitudine", "Longitudine"];
@@ -262,7 +267,7 @@ const csvFunction = (ipAddress) => {
                   fileNameMission = fileNameValues[1];
                   fileNameSystemCode = fileNameValues[2];
                   fileNameAdapterCode = fileNameValues[3];
-         
+                  uniqueIDFile = fileNameMission + "_" + fileNameAdapterCode + "_id_";
               }
               catch (error)
               {
@@ -289,6 +294,8 @@ const csvFunction = (ipAddress) => {
                       
                       const lines = data.split('\r\n');
                       
+                      
+
                       lines.forEach((line) => {
                         // Process the line here
 
@@ -372,6 +379,7 @@ const csvFunction = (ipAddress) => {
                             {
                                 
                                 if (!line.includes("BTLE ESSID"))
+                        
                                 {
                                     columnBTLENames = columnBTLENamesOldVers;
                                 }
@@ -538,7 +546,7 @@ const csvFunction = (ipAddress) => {
                             {
                       // insert AP STRUCTURE IN DATABASE     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertAPStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First time seen"], item["Last time seen"], item["channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["# beacons"], item["# IV"], item["LAN IP"], item["ID-length"], item["ESSID"].replace("\0", " "), item["Key"], "", item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "", "0"))
+                                if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First Time Seen"], item["Last Time Seen"], item["Channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["#Beacons"], item["#IV"], item["LAN IP"], item["ID-Length"], item["ESSID"].replace("\0", " ").replace("'", "''"), item["Key"], "", item["BSSID"], "", "", uniqueIDFile + item["First Time Seen"], item["Longitudine"], item["Latitudine"], "0"))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -547,7 +555,7 @@ const csvFunction = (ipAddress) => {
                             catch (error)
                             {
                                 logging(ipAddress, currentUserName, `Error importing AP structure from CSV File ${file.name}. AP will not be imported in database! Detail error ${error}`, errorLogFile);
-                                deleteRecordsFromDatabase("uniqueIDFile", ipAddress);                                
+                                                             
                                 forceContinueOnNextFile = true;
                             } 
                         });
@@ -556,8 +564,6 @@ const csvFunction = (ipAddress) => {
                         insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
                         
                     }
-                    
-
                     
                     if (currentCSVfilePR.length > 0 && !forceContinueOnNextFile)
                     {
@@ -568,7 +574,7 @@ const csvFunction = (ipAddress) => {
                             try
                             {
 
-                                if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertPRStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First time seen"], item["Last time seen"], "", "", "", "", "", item["Power"], "", "", "", "", item["Probed ESSID"].replace("\0", " "), "", item["# packets"], item["BSSID"], "", "", "uniqueIDFile", item.hasOwnProperty("Longitudine") ? item["Longitudine"] : "", item.hasOwnProperty("Latitudine") ? item["Latitudine"] : "", "0", ))
+                                if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["Station MAC"], "PR", item["First Time Seen"], item["Last Time Seen"], "", "", "", "", "", item["Power"], "", "", "", "", item["Probed ESSID"].replace("\0", " ").replace("'", "''"), "", item["#Packets"], item["BSSID"], "", "", uniqueIDFile + item["First Time Seen"], item["Longitudine"], item["Latitudine"], "0", ))
                                 {
                                     throw new Error("insertRecordInDatabase error! Return not empty");
                                 }
@@ -577,7 +583,7 @@ const csvFunction = (ipAddress) => {
                             catch (error)
                             {
                                 logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. PR will not be imported in database. Detail error ${error}`, errorLogFile);
-                                deleteRecordsFromDatabase("uniqueIDFile", ipAddress);                                
+                                                              
                                 forceContinueOnNextFile = true;
                             }
                         });
@@ -599,7 +605,7 @@ const csvFunction = (ipAddress) => {
                                 {
                                     // insert BTLE STRUCTURE IN DATABASE
                                     //DateTime.Now.toString("yyyy-MM-dd HH:mm:ss")
-                                    if (!insertRecordInDatabaseBulk(ipAddress, new Date().toISOString().replace(/[-:.]/g, ''), currentUserName, ipAddress, applicationName, "InsertBTLEStructure", fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First time seen"], item["BTLE Last time seen"], "", "", "", "", "", item["BTLE Power"], "", "", "", "", item["BTLE ESSID"].replace("\0", " "), "", item["BTLE # packets"], item["BTLE BSSID"], "", "", "uniqueIDFile", item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
+                                    if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BTLE Station MAC"], "BTLE", item["BTLE First Time Seen"], item["BTLE Last Time Seen"], "", "", "", "", "", item["BTLE Power"], "", "", "", "", item["BTLE ESSID"].replace("\0", " ").replace("'", "''"), "", item["BTLE #Packets"], item["BTLE BSSID"], "", "", uniqueIDFile + item["BTLE First Time Seen"], item["BTLE Latitudine"], item["BTLE Longitudine"], "0"))
                                     {
                                         throw new Error("insertRecordInDatabase error! Return not empty");
                                     }
@@ -608,7 +614,7 @@ const csvFunction = (ipAddress) => {
                                 catch (error)
                                 {
                                     logging(ipAddress, currentUserName, `Error found in CSV File ${file.name}. BTLE will not be imported in database. Detail error ${error}`, errorLogFile);
-                                    deleteRecordsFromDatabase("uniqueIDFile", ipAddress);
+                                    
                                  forceContinueOnNextFile = true;
                                 }
                             });
@@ -679,44 +685,56 @@ const csvFunction = (ipAddress) => {
 }
 
 
-function extractData(filePath) {
-  
+const extractData = (filePath) => {
     // Read the file
     const fileContent = fs.readFileSync(filePath, 'utf8');
-
+  
     // Split the content into groups based on empty lines
     const groups = fileContent.split('\r\n\r\n');
-    
+  
+    // Process each group and build the dictionary
+    const dictionary = groups.reduce((dict, group) => {
+      // Get the first line of the group
+      const firstLine = group.trim().split('\r\n')[0];
+  
+      // Extract the OUI and PRODUCER information
+      const match = firstLine.match(/([0-9A-Fa-f-]+)\s+\(hex\)\s+(.+)/);
+      if (!match) return dict;
+  
+      const OUI = match[1];
+      const PRODUCER = match[2].trim();
+  
+      // Add the entry to the dictionary
+      dict[OUI] = PRODUCER;
+      return dict;
+    }, {});
+  
+    return dictionary;
+  };
 
-    // Process each group
-    const objects = groups.map(group => {
-    // Get the first line of the group
-    
-    const firstLine = group.trim().split('\r\n')[0];
-    
-    // Extract the OUI and PRODUCER information
-    const match = firstLine.match(/([0-9A-Fa-f-]+)\s+\(hex\)\s+(.+)/);
-    if (!match) return null;
 
-    const OUI = match[1]
-    const PRODUCER = match[2].trim();
+const assignProducerToOUI = (mac, ouiList) => {
+   
+    try {
+        mac = mac.substring(0,8).replace(/:/g,"-");
+      if (ouiList && ouiList[mac]) { 
+        return ouiList[mac];
 
-    // Return the object with extracted data
-    return { OUI, PRODUCER };
-    });
-    return objects;
-}
+      }
+      else
+        return "Unknown";
+    } catch (error) {
+      return "Unknown";
+    }
+  };
+
 
 const mainImporter = async (req, res, next) => {
     const ipAddress = getComputerIp();
     try {
 
         const filePath = DIRECTORIES.sourceDirOUI;
-        const result = extractData(filePath);
-        
-        console.log(result);
-        //HERE I HAVE LIST WITH ALL OUI - PRODUCER 
-
+        ouiList = extractData(filePath);
 
         logging(ipAddress, currentUserName, "Application Start", logFile);
 
