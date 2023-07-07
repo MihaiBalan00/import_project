@@ -5,15 +5,12 @@ const os = require("os");
 const fs = require('fs');
 const path = require('path');
 
-let options = {timeZone: 'Europe/Bucharest', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
+const options = {timeZone: 'Europe/Bucharest', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
 
 let ouiList;
 
-
 const currentUserName = CONFIGS.userName;
-let userApplication = CONFIGS.userApplication; 
-let applicationName= CONFIGS.applicationName;
-let functionName= CONFIGS.functionName;
+const applicationName= CONFIGS.applicationName;
 
 let currentCSVfileAP = [];
 let currentCSVfileBTLE = [];
@@ -36,11 +33,11 @@ let bulkInsertValues = [];
 
 let forceContinueOnNextFile = false;
 
-let sourceDirWifiCSV = DIRECTORIES.sourceDirWifiCSV;
+const sourceDirWifiCSV = DIRECTORIES.sourceDirWifiCSV;
 
-let sourceDirOUI = DIRECTORIES.sourceDirOUI;
-let destDirFaulty = DIRECTORIES.destDirFaulty;
-let destDirImported = DIRECTORIES.destDirImported;
+const sourceDirOUI = DIRECTORIES.sourceDirOUI;
+const destDirFaulty = DIRECTORIES.destDirFaulty;
+const destDirImported = DIRECTORIES.destDirImported;
 
 const getComputerIp = () => {
   const interfaces = os.networkInterfaces();
@@ -382,7 +379,7 @@ const csvFunction = (ipAddress) => {
 
                             // Check for BTLE import
                             
-                            if (line.includes("BTLE") && line.indexOf(columnBTLENames[0]) >= 0 && line.indexOf(columnBTLENames[1]) >= 0 && line.indexOf(columnBTLENames[2]) >= 0)
+                            else if (line.includes("BTLE") && line.indexOf(columnBTLENames[0]) >= 0 && line.indexOf(columnBTLENames[1]) >= 0 && line.indexOf(columnBTLENames[2]) >= 0)
                             {
                                 
                                 if (!line.includes("BTLE ESSID"))
@@ -455,7 +452,7 @@ const csvFunction = (ipAddress) => {
 
                              // GET VALUES FROM CSV LINE BY LINE (PR STRUCTURE)
                              
-                             if (foundPR && !forceContinueOnNextFile)
+                            else if (foundPR && !forceContinueOnNextFile)
                              {
                                 
                                  csvPRValues = line.split(',').slice(0,columnPRNames.length-1);
@@ -500,7 +497,7 @@ const csvFunction = (ipAddress) => {
                              
                              
                              // GET VALUES FROM CSV LINE BY LINE (BTLE STRUCTURE)
-                             if (foundBTLE && !forceContinueOnNextFile)
+                             else if (foundBTLE && !forceContinueOnNextFile)
                              {
                               
                                  csvBTLEValues = line.split(',');
@@ -572,7 +569,7 @@ const csvFunction = (ipAddress) => {
                         
                     }
                     
-                    if (currentCSVfilePR.length > 0 && !forceContinueOnNextFile)
+                    else if (currentCSVfilePR.length > 0 && !forceContinueOnNextFile)
                     {
                         currentCSVfilePR=currentCSVfilePR.slice(1,currentCSVfilePR.length);
                         //Importam in baza de date PR
@@ -601,7 +598,7 @@ const csvFunction = (ipAddress) => {
 
                         // INSERT BTLE IN DATABASE
                         
-                        if (currentCSVfileBTLE.length> 0 && !forceContinueOnNextFile)
+                    else if (currentCSVfileBTLE.length> 0 && !forceContinueOnNextFile)
                         {
                             currentCSVfileBTLE=currentCSVfileBTLE.slice(1,currentCSVfileBTLE.length);
                             //Importam in baza de date PR
@@ -626,7 +623,7 @@ const csvFunction = (ipAddress) => {
                         
                             
                             insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
-                        }
+                    }
                             
                         // INSERT BTLE IN DATABASE
             
@@ -640,7 +637,7 @@ const csvFunction = (ipAddress) => {
                             logging(ipAddress, currentUserName, `Error moving CSV File ${file.name} to ${destDirImported + "\\" + file.name}`, errorLogFile);
                             forceContinueOnNextFile = true;
                             }
-                        }
+                    }
         
 
                     
@@ -733,7 +730,7 @@ const mainImporter = async (req, res, next) => {
     const ipAddress = getComputerIp();
     try {
 
-        const filePath = DIRECTORIES.sourceDirOUI;
+        const filePath = sourceDirOUI;
         ouiList = extractData(filePath);
 
         logging(ipAddress, currentUserName, "Application Start", logFile);

@@ -14,9 +14,7 @@
     },
     "CONFIGS":{
         "userName": "SRSIPDN\\user.sm",
-        "userApplication": "SRSIPDN\\user.sm",
-        "applicationName":"Wise",
-        "functionName":"fImportFilesSet"
+        "applicationName":"Wise"
     },
     "EXPRESS_PORT": 5005,
     "WIN_SERVICE_NAME": "Import Files Into DB",
