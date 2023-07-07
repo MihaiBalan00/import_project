@@ -2,7 +2,8 @@ const { insertBulkElastic} = require("../../database/elastic");
 const { ES, errorLogFile, logFile, DIRECTORIES, CONFIGS } = require("../../conf.json");
 const { insertLog } = require("../../Logs/Script/formatLogs");
 const os = require("os");
-const fs = require('fs');
+const fs = require('fs').promises;
+const fss = require('fs');
 const path = require('path');
 
 const options = {timeZone: 'Europe/Bucharest', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
@@ -87,8 +88,8 @@ const logging = (
 };
 
 const createDirectoryIfNotExists = (dirPath) => {
-    if (dirPath && !fs.existsSync(dirPath)) {
-      fs.mkdirSync(dirPath);
+    if (dirPath && !fss.existsSync(dirPath)) {
+      fss.mkdirSync(dirPath);
     }
   }
 
@@ -100,52 +101,52 @@ const appendPathSeparatorIfMissing = (dirPath) => {
   }
 
 const logAndStopIfNotExisting = (type, dirPath, ipAddress) =>{
-    if(!fs.existsSync(dirPath)){
+    if(!fss.existsSync(dirPath)){
         logging(ipAddress, currentUserName, `Error: ${type} ${dirPath} does not exist on disk`, errorLogFile);
         logging(ipAddress, currentUserName, `Application End`, logFile);
         throw new Error(`Unable to find ${type} on disk.`);
     }
 }
 
-const getFilesFromDirectory= (directoryPath, pattern) => {
-    const files = [];
+const getFilesFromDirectory = async (directoryPath, pattern) => {
     try {
+      const dirents = await fs.readdir(directoryPath, { withFileTypes: true });
       
-      const dirents = fs.readdirSync(directoryPath, { withFileTypes: true });
+      const files = [];
+  
       for (const dirent of dirents) {
-        
         const filePath = path.join(directoryPath, dirent.name);
-        
+  
         if (dirent.isFile() && filePath.match(pattern)) {
-            
-          const stats = fs.statSync(filePath);
-    
+          const stats = await fs.stat(filePath);
+  
           const fileInfo = {
             name: dirent.name,
             path: filePath,
             size: stats.size,
             createdAt: stats.birthtime,
-            modifiedAt: stats.mtime
+            modifiedAt: stats.mtime,
           };
-              
-              files.push(fileInfo);
+  
+          files.push(fileInfo);
         }
       }
+      
+      return files;
     } catch (error) {
-        throw new Error(`Error getting ${pattern} files from ${directoryPath} directory.`);
+      throw new Error(`Error getting ${pattern} files from ${directoryPath} directory.`);
     }
-    return files;
-  }
+  };
 
 const isFileLocked = (file) => {
     let stream = null;
     try {
-        stream = fs.openSync(file,'r');
+        stream = fss.openSync(file,'r');
     } catch (error) {
         return true;
     } finally {
         if (stream !== null) {
-            fs.closeSync(stream);
+            fss.closeSync(stream);
         }
     }   
     return false;
@@ -154,7 +155,7 @@ const isFileLocked = (file) => {
 const moveFileTo = (file, destinationPath) => {
     try {
       
-        fs.renameSync(file.path, destinationPath);
+        fss.renameSync(file.path, destinationPath);
     } catch (ex) {
         return false;
     }
@@ -233,77 +234,69 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
             
         }
 
-const csvFunction = (ipAddress) => {
+const csvFunction = async (ipAddress) => {
 
-  const csvFileList = getFilesFromDirectory(sourceDirWifiCSV, ".csv");
+  const csvFileList = await getFilesFromDirectory(sourceDirWifiCSV, ".csv");
 
   logging(ipAddress, currentUserName, "CSV files type", logFile);
   logging(ipAddress, currentUserName, `Get all ${csvFileList.length} CSV Files.....done.`, logFile);
 
-  if (csvFileList.length > 0)
-    {
-     
-     csvFileList.map(file =>{
+    //********************************** RESET DICTIONARY VALUES****************************
+    columnAPNames = ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key", "Latitudine", "Longitudine"];
+    columnPRNames = ["Station MAC", "First Time Seen", "Last Time Seen", "Power", "#Packets", "BSSID", "Latitudine" ,"Longitudine","Probed ESSID"]; 
+    columnBTLENames = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
+    columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
+    //**************************************************************************************
 
+
+  if (csvFileList.length > 0) {
+    
+    await Promise.all(csvFileList.map(async (file) => {
+      
+     
+      
+
+      try {
+        let fileNameValues = file.name.split('_');
+        fileNameLocation = fileNameValues[0];
+        fileNameMission = fileNameValues[1];
+        fileNameSystemCode = fileNameValues[2];
+        fileNameAdapterCode = fileNameValues[3];
+        uniqueIDFile = fileNameMission + "_" + fileNameAdapterCode + "_id_";
+      } catch (error) {
+        logging(ipAddress, currentUserName, `Critical error while getting values from CSV File name ${file.name}. Error: ${error}`, errorLogFile);
+        forceContinueOnNextFile = true;
+        return;
+      }
+
+      try {
+        logging(ipAddress, currentUserName, `Read CSV File ${file.name} .....done.`, logFile);
+
+        if (isFileLocked(file.path)) {
+          throw new Error(`CSV file ${file.name} is locked`);
+        }
+        logging(ipAddress, currentUserName, `CSV File ${file.name}  is not locked.`, logFile);
+
+        const data = await fs.readFile(file.path, 'utf8');
 
         bulkInsertValues = [];
-        forceContinueOnNextFile = false;
-        let notImportedLine = false;
-        currentCSVfileAP = [];
-        currentCSVfilePR = [];
-        currentCSVfileBTLE = [];
-        foundAP = false;
-        foundPR = false;
-        foundBTLE = false;
-        let uniqueIDFile = "";
+      forceContinueOnNextFile = false;
+      let notImportedLine = false;
+      currentCSVfileAP = [];
+      currentCSVfilePR = [];
+      currentCSVfileBTLE = [];
+      foundAP = false;
+      foundPR = false;
+      foundBTLE = false;
+      let uniqueIDFile = "";
+        
+        const lines = data.split('\r\n');
 
-         //********************************** RESET DICTIONARY VALUES****************************
-        columnAPNames = ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key", "Latitudine", "Longitudine"];
-        columnPRNames = ["Station MAC", "First Time Seen", "Last Time Seen", "Power", "#Packets", "BSSID", "Latitudine" ,"Longitudine","Probed ESSID"]; 
-        columnBTLENames = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
-        columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
-        //**************************************************************************************
-            
-        try
-              {
-                  let fileNameValues = file.name.split('_');
-                  fileNameLocation = fileNameValues[0];
-                  fileNameMission = fileNameValues[1];
-                  fileNameSystemCode = fileNameValues[2];
-                  fileNameAdapterCode = fileNameValues[3];
-                  uniqueIDFile = fileNameMission + "_" + fileNameAdapterCode + "_id_";
-              }
-              catch (error)
-              {
-                  
-                  logging(ipAddress, currentUserName, `Critical error while getting values from CSV File name ${file.name}. Error: ${error}`, errorLogFile);
-                  forceContinueOnNextFile = true;
-                  return;
-              }
-
-           try
-                {
-                  
-                    logging(ipAddress, currentUserName, `Read CSV File ${file.name} .....done.`, logFile);
-
-                    if (isFileLocked(file.path))
-                        {
-                            throw new Error(`CSV file ${file.name} is locked`);
-                        }
-                    logging(ipAddress, currentUserName, `CSV File ${file.name}  is not locked.`, logFile);
-                    
-                   
-                        const data = fs.readFileSync(file.path, 'utf8');
-                      
-                      
-                      const lines = data.split('\r\n');
-                      
-                      notImportedLine = false;
-
-                      lines.forEach((line) => {
-                        // Process the line here
-
-                          if(forceContinueOnNextFile===false && line!=="") {
+        notImportedLine = false;
+        
+        await Promise.all(lines.map(async (line) => { {
+         
+          if (forceContinueOnNextFile === false && line !== "") {
                             
                             // Check if it is AP by comparing first 5                       
                             if (line.indexOf(columnAPNames[0]) >= 0 && line.indexOf(columnAPNames[1]) >= 0 && line.indexOf(columnAPNames[2]) >= 0 && line.indexOf(columnAPNames[3]) >= 0 && line.indexOf(columnAPNames[4]) >= 0)
@@ -449,7 +442,7 @@ const csvFunction = (ipAddress) => {
                                 }
 
                             }
-
+                            
                              // GET VALUES FROM CSV LINE BY LINE (PR STRUCTURE)
                              
                             else if (foundPR && !forceContinueOnNextFile)
@@ -528,13 +521,10 @@ const csvFunction = (ipAddress) => {
                                      notImportedLine = true;
                                  }
                              }
-                            
-                             
-                      }});
-                      
-                      
-                      
-                                     
+          }
+          
+        }       }));            
+                                    
                     //finished to parse CSV file. Next check for error and if zero errors import in database
                     
                     if (currentCSVfileAP.length > 0 && !forceContinueOnNextFile)
@@ -542,29 +532,20 @@ const csvFunction = (ipAddress) => {
                         
                         currentCSVfileAP = currentCSVfileAP.slice(1,currentCSVfileAP.length);
                         //Importam in baza de date AP
-                        
-                        currentCSVfileAP.map( item => 
-                        {
-                            
-                            try
-                            {
-                      // insert AP STRUCTURE IN DATABASE     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                                if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First Time Seen"], item["Last Time Seen"], item["Channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["#Beacons"], item["#IV"], item["LAN IP"], item["ID-Length"], item["ESSID"].replace("\0", " ").replace("'", "''"), item["Key"], "", item["BSSID"], "", "", uniqueIDFile + item["First Time Seen"], item["Longitudine"], item["Latitudine"], "0"))
-                                {
-                                    
-                                    throw new Error("insertRecordInDatabase error! Return not empty");
-                                }
-
+                       
+                        await Promise.all(currentCSVfileAP.map(async (item) => {
+                            try {
+                             
+                              // insert AP STRUCTURE IN DATABASE
+                              if (!insertRecordInDatabaseBulk(ipAddress, fileNameMission, fileNameLocation, fileNameAdapterCode, fileNameSystemCode, item["BSSID"], "AP", item["First Time Seen"], item["Last Time Seen"], item["Channel"], item["Speed"], item["Privacy"], item["Cipher"], item["Authentication"], item["Power"], item["#Beacons"], item["#IV"], item["LAN IP"], item["ID-Length"], item["ESSID"].replace("\0", " ").replace("'", "''"), item["Key"], "", item["BSSID"], "", "", uniqueIDFile + item["First Time Seen"], item["Longitudine"], item["Latitudine"], "0")) {
+                                throw new Error("insertRecordInDatabase error! Return not empty");
+                              }
+                            } catch (error) {
+                              logging(ipAddress, currentUserName, `Error importing AP file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);
+                              forceContinueOnNextFile = true;
                             }
-                            catch (error)
-                            {
-                                logging(ipAddress, currentUserName, `Error importing AP file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);                             
-                                forceContinueOnNextFile = true;
-                            } 
-                        });
+                          }));
 
-                        
                         insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
                         
                     }
@@ -573,7 +554,7 @@ const csvFunction = (ipAddress) => {
                     {
                         currentCSVfilePR=currentCSVfilePR.slice(1,currentCSVfilePR.length);
                         //Importam in baza de date PR
-                        currentCSVfilePR.map(item =>
+                        await Promise.all(currentCSVfilePR.map(async (item) => 
                         {
                             try
                             {
@@ -589,7 +570,7 @@ const csvFunction = (ipAddress) => {
                                 logging(ipAddress, currentUserName, `Error importing PR file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);                              
                                 forceContinueOnNextFile = true;
                             }
-                        });
+                        }));
 
                         
                         insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
@@ -602,8 +583,8 @@ const csvFunction = (ipAddress) => {
                         {
                             currentCSVfileBTLE=currentCSVfileBTLE.slice(1,currentCSVfileBTLE.length);
                             //Importam in baza de date PR
-                           currentCSVfileBTLE.map(item =>
-                            {
+                            await Promise.all(currentCSVfileBTLE.map(async (item) => {
+                            
                                 try
                                 {
                                     // insert BTLE STRUCTURE IN DATABASE
@@ -619,7 +600,7 @@ const csvFunction = (ipAddress) => {
                                     logging(ipAddress, currentUserName, `Error importing BTLE file ${file.name} into DataBase. Detail error ${error}`, errorLogFile);
                                  forceContinueOnNextFile = true;
                                 }
-                            });
+                            }));
                         
                             
                             insertBulkElastic(bulkInsertValues, ES.INDEX_WISE);
@@ -656,16 +637,12 @@ const csvFunction = (ipAddress) => {
                     }
                   
                     //application end?
-                    
+                } catch (error) {
+                    logging(ipAddress, currentUserName, `Error while reading lines`, errorLogFile);                                   
+                  }
                 }// Main try                   
-                
-                catch (error)
-                {
-                    logging(ipAddress, currentUserName, `${error}` , errorLogFile);
-                }
-                
+            ));             
           
-     });
         return;
     }
     else
@@ -684,7 +661,7 @@ const csvFunction = (ipAddress) => {
 
 const extractData = (filePath) => {
     // Read the file
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = fss.readFileSync(filePath, 'utf8');
   
     // Split the content into groups based on empty lines
     const groups = fileContent.split('\r\n\r\n');
@@ -751,7 +728,7 @@ const mainImporter = async (req, res, next) => {
 
         logging(ipAddress, currentUserName, "Read configuration file.....done.", logFile);
 
-        csvFunction(ipAddress);
+        await csvFunction(ipAddress);
 
 
   } catch (error) {
