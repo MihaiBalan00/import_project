@@ -1,6 +1,6 @@
 {
     "ES": {
-        "IP": "http://10.30.10.112:9200",
+        "IP": "http://localhost:9200",
         "INDEX_WISE": "index_wise"
     },
     "errorLogFile": "Logs/errorLog.txt",
@@ -14,10 +14,17 @@
     },
     "CONFIGS":{
         "userName": "SRSIPDN\\user.sm",
-        "applicationName":"Wise"
+        "applicationName":"Wise",
+        "batchSize": 10
     },
     "EXPRESS_PORT": 5005,
     "WIN_SERVICE_NAME": "Import Files Into DB",
     "WIN_SERVICE_DESCRIPTION": "Serviciu de import al fisierelor in baza de date",
-    "WIN_SERVICE_SCRIPT": "./index.js"
+    "WIN_SERVICE_SCRIPT": "./index.js",
+    "DICTIONARY_VALUES": {
+        "columnAPNames" : ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key", "Latitudine", "Longitudine"],
+        "columnPRNames" : ["Station MAC", "First Time Seen", "Last Time Seen", "Power", "#Packets", "BSSID", "Latitudine" ,"Longitudine","Probed ESSID"],
+        "columnBTLENames" : ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"],
+        "columnBTLENamesOldVers" : ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"]
+    }
 }

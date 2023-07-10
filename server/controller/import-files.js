@@ -1,5 +1,5 @@
 const { insertBulkElastic} = require("../../database/elastic");
-const { ES, errorLogFile, logFile, DIRECTORIES, CONFIGS } = require("../../conf.json");
+const { ES, errorLogFile, logFile, DIRECTORIES, CONFIGS, DICTIONARY_VALUES } = require("../../conf.json");
 const { insertLog } = require("../../Logs/Script/formatLogs");
 const os = require("os");
 const fs = require('fs').promises;
@@ -42,22 +42,9 @@ const destDirImported = DIRECTORIES.destDirImported;
 
 const getComputerIp = () => {
   const interfaces = os.networkInterfaces();
-  let ipAddress;
-
-  for (const interfaceKey in interfaces) {
-    const interfaceList = interfaces[interfaceKey];
-
-    for (const interfaceInfo of interfaceList) {
-      if (!interfaceInfo.internal && interfaceInfo.family === "IPv4") {
-        ipAddress = interfaceInfo.address;
-        break;
-      }
-    }
-
-    if (ipAddress) {
-      break;
-    }
-  }
+  const ipAddress = Object.values(interfaces)
+    .flat()
+    .find(interfaceInfo => !interfaceInfo.internal && interfaceInfo.family === "IPv4")?.address;
 
   if (ipAddress) {
     return ipAddress;
@@ -108,13 +95,17 @@ const logAndStopIfNotExisting = (type, dirPath, ipAddress) =>{
     }
 }
 
-const getFilesFromDirectory = async (directoryPath, pattern) => {
+const getFilesFromDirectory = async (directoryPath, pattern, batchSize) => {
     try {
       const dirents = await fs.readdir(directoryPath, { withFileTypes: true });
       
       const files = [];
+      let count = 0;
   
       for (const dirent of dirents) {
+        if (count >= batchSize) {
+          break;
+        }
         const filePath = path.join(directoryPath, dirent.name);
   
         if (dirent.isFile() && filePath.match(pattern)) {
@@ -129,6 +120,7 @@ const getFilesFromDirectory = async (directoryPath, pattern) => {
           };
   
           files.push(fileInfo);
+          count ++;
         }
       }
       
@@ -168,20 +160,11 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
             
             let xMacProducer = assignProducerToOUI(xMacMain, ouiList);
 
-            let isRandomMac = xMacMain[1] === '2' || xMacMain[1] === '6' || xMacMain[1].toLowerCase() === 'a' || xMacMain[1].toLowerCase() === 'e' ? true : false
-
-            //What if it's random generated, but it is found in OUI list?
+            const isRandomMac = xMacMain[1] === '2' || xMacMain[1] === '6' || xMacMain[1].toLowerCase() === 'a' || xMacMain[1].toLowerCase() === 'e';
+//What if it's random generated, but it is found in OUI list?
 
             try
             {
-                if (xLongitude === "0" || xLongitude === "")
-                {
-                    xLongitude = "";
-                }
-                if (xLatitude === "0" || xLatitude === "")
-                {
-                    xLatitude = "";
-                }
 
                 const records =
                   {
@@ -216,8 +199,8 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
                     message: xMessage,
                     observations: xObservations,
                     idfilename: xIDFileName,
-                    latitude: xLatitude,
-                    longitude: xLongitude,
+                    latitude: (xLatitude === "0" || xLatitude === "") ? "" : xLatitude,
+                    longitude: (xLongitude === "0" || xLongitude === "") ? "" : xLongitude,
                     importflag: xImportFlag
                   };
 
@@ -236,16 +219,16 @@ const insertRecordInDatabaseBulk = ( ipAddress, xCodeMission, xLocation, xCodeAd
 
 const csvFunction = async (ipAddress) => {
 
-  const csvFileList = await getFilesFromDirectory(sourceDirWifiCSV, ".csv");
-
+  const csvFileList = await getFilesFromDirectory(sourceDirWifiCSV, ".csv", CONFIGS.batchSize);
+  
   logging(ipAddress, currentUserName, "CSV files type", logFile);
   logging(ipAddress, currentUserName, `Get all ${csvFileList.length} CSV Files.....done.`, logFile);
 
     //********************************** RESET DICTIONARY VALUES****************************
-    columnAPNames = ["BSSID", "First Time Seen", "Last Time Seen", "Channel", "Speed", "Privacy", "Cipher", "Authentication", "Power", "#Beacons", "#IV", "LAN IP", "ID-Length", "ESSID", "Key", "Latitudine", "Longitudine"];
-    columnPRNames = ["Station MAC", "First Time Seen", "Last Time Seen", "Power", "#Packets", "BSSID", "Latitudine" ,"Longitudine","Probed ESSID"]; 
-    columnBTLENames = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID","BTLE ESSID", "BTLE Latitudine", "BTLE Longitudine"];
-    columnBTLENamesOldVers = ["BTLE Station MAC", "BTLE First Time Seen", "BTLE Last Time Seen", "BTLE Power", "BTLE #Packets", "BTLE BSSID", "BTLE Latitudine", "BTLE Longitudine"];
+    columnAPNames = DICTIONARY_VALUES.columnAPNames;
+    columnPRNames = DICTIONARY_VALUES.columnPRNames;
+    columnBTLENames = DICTIONARY_VALUES.columnBTLENames;
+    columnBTLENamesOldVers = DICTIONARY_VALUES.columnBTLENamesOldVers;
     //**************************************************************************************
 
 
@@ -253,9 +236,6 @@ const csvFunction = async (ipAddress) => {
     
     await Promise.all(csvFileList.map(async (file) => {
       
-     
-      
-
       try {
         let fileNameValues = file.name.split('_');
         fileNameLocation = fileNameValues[0];
@@ -643,18 +623,17 @@ const csvFunction = async (ipAddress) => {
                 }// Main try                   
             ));             
           
-        return;
     }
     else
             {
                 logging(ipAddress, currentUserName, "No CSV files on disk", logFile);
+                logging(ipAddress, currentUserName, "Application End", logFile);
+                return;
             }
-          
-
-            logging(ipAddress, currentUserName, "Application End", logFile);
-            
-            
-            //Close DB connection if open.
+      
+      csvFunction(ipAddress);
+                       
+      //Close DB connection if open.
      
 }
 
@@ -729,7 +708,6 @@ const mainImporter = async (req, res, next) => {
         logging(ipAddress, currentUserName, "Read configuration file.....done.", logFile);
 
         await csvFunction(ipAddress);
-
 
   } catch (error) {
       logging(ipAddress, currentUserName, `Error found while running script: ${error}`, errorLogFile);
